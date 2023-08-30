@@ -1,0 +1,88 @@
+# ONE
+/mysql/tabkyc_document_type/:name.http.get:
+  summary: Fetch tabKYC_Document_Type
+  description: Fetch tabKYC_Document_Type from database
+  fn: com.biz.mysql.tabkyc_document_type.one
+  params:
+    - name: name
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# CREATE
+/mysql/tabkyc_document_type.http.post:
+  summary: Create a new tabKYC_Document_Type
+  description: Create tabKYC_Document_Type from database
+  fn: com.biz.mysql.tabkyc_document_type.create
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/mysql/tabKYC_Document_Type'
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# UPDATE
+/mysql/tabkyc_document_type/:name.http.put:
+  summary: Update a tabKYC_Document_Type
+  description: Update tabKYC_Document_Type from database
+  fn: com.biz.mysql.tabkyc_document_type.update
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/mysql/tabKYC_Document_Type'
+  params:
+    - name: name
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# DELETE
+/mysql/tabkyc_document_type/:name.http.delete:
+  summary: Delete a tabKYC_Document_Type
+  description: Delete tabKYC_Document_Type from database
+  fn: com.biz.mysql.tabkyc_document_type.delete
+  params:
+    - name: name
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# SEARCH
+/mysql/tabkyc_document_type/search.http.post:
+  summary: Fetch multiple tabKYC_Document_Type
+  description: Fetch multiple tabKYC_Document_Type from database
+  fn: com.biz.mysql.tabkyc_document_type.search
+  body:
+    content:
+      application/json:
+        schema:
+          type: object
+  responses:
+    content:
+      application/json:
+        schema:
+          type: array
+

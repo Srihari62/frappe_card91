@@ -1,0 +1,88 @@
+# ONE
+/mysql/tabaccount_balance/:name.http.get:
+  summary: Fetch tabAccount_Balance
+  description: Fetch tabAccount_Balance from database
+  fn: com.biz.mysql.tabaccount_balance.one
+  params:
+    - name: name
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# CREATE
+/mysql/tabaccount_balance.http.post:
+  summary: Create a new tabAccount_Balance
+  description: Create tabAccount_Balance from database
+  fn: com.biz.mysql.tabaccount_balance.create
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/mysql/tabAccount_Balance'
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# UPDATE
+/mysql/tabaccount_balance/:name.http.put:
+  summary: Update a tabAccount_Balance
+  description: Update tabAccount_Balance from database
+  fn: com.biz.mysql.tabaccount_balance.update
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/mysql/tabAccount_Balance'
+  params:
+    - name: name
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# DELETE
+/mysql/tabaccount_balance/:name.http.delete:
+  summary: Delete a tabAccount_Balance
+  description: Delete tabAccount_Balance from database
+  fn: com.biz.mysql.tabaccount_balance.delete
+  params:
+    - name: name
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# SEARCH
+/mysql/tabaccount_balance/search.http.post:
+  summary: Fetch multiple tabAccount_Balance
+  description: Fetch multiple tabAccount_Balance from database
+  fn: com.biz.mysql.tabaccount_balance.search
+  body:
+    content:
+      application/json:
+        schema:
+          type: object
+  responses:
+    content:
+      application/json:
+        schema:
+          type: array
+

@@ -1,0 +1,12 @@
+summary: Update tabKYC_Document_Type
+tasks:
+  - id: mysql_tabkyc_document_type_update
+    fn: com.gs.datastore
+    args:
+      datasource: mysql
+      data:
+        where:
+          name: <% inputs.params.name %>
+        data: <% inputs.body %>
+      config:
+        method: tabKYC_Document_Type.update

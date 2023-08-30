@@ -1,0 +1,88 @@
+# ONE
+/mysql/tabcustomer_transaction_freeze/:name.http.get:
+  summary: Fetch tabCustomer_Transaction_Freeze
+  description: Fetch tabCustomer_Transaction_Freeze from database
+  fn: com.biz.mysql.tabcustomer_transaction_freeze.one
+  params:
+    - name: name
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# CREATE
+/mysql/tabcustomer_transaction_freeze.http.post:
+  summary: Create a new tabCustomer_Transaction_Freeze
+  description: Create tabCustomer_Transaction_Freeze from database
+  fn: com.biz.mysql.tabcustomer_transaction_freeze.create
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/mysql/tabCustomer_Transaction_Freeze'
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# UPDATE
+/mysql/tabcustomer_transaction_freeze/:name.http.put:
+  summary: Update a tabCustomer_Transaction_Freeze
+  description: Update tabCustomer_Transaction_Freeze from database
+  fn: com.biz.mysql.tabcustomer_transaction_freeze.update
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/mysql/tabCustomer_Transaction_Freeze'
+  params:
+    - name: name
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# DELETE
+/mysql/tabcustomer_transaction_freeze/:name.http.delete:
+  summary: Delete a tabCustomer_Transaction_Freeze
+  description: Delete tabCustomer_Transaction_Freeze from database
+  fn: com.biz.mysql.tabcustomer_transaction_freeze.delete
+  params:
+    - name: name
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# SEARCH
+/mysql/tabcustomer_transaction_freeze/search.http.post:
+  summary: Fetch multiple tabCustomer_Transaction_Freeze
+  description: Fetch multiple tabCustomer_Transaction_Freeze from database
+  fn: com.biz.mysql.tabcustomer_transaction_freeze.search
+  body:
+    content:
+      application/json:
+        schema:
+          type: object
+  responses:
+    content:
+      application/json:
+        schema:
+          type: array
+

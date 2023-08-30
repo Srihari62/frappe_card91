@@ -1,0 +1,11 @@
+summary: Fetch tabTSP_List
+tasks:
+  - id: mysql_tabtsp_list_one
+    fn: com.gs.datastore
+    args:
+      datasource: mysql
+      data:
+        where:
+          name: <% inputs.params.name %>
+      config:
+        method: tabTSP_List.findUnique

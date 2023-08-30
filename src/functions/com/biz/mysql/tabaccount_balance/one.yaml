@@ -1,0 +1,11 @@
+summary: Fetch tabAccount_Balance
+tasks:
+  - id: mysql_tabaccount_balance_one
+    fn: com.gs.datastore
+    args:
+      datasource: mysql
+      data:
+        where:
+          name: <% inputs.params.name %>
+      config:
+        method: tabAccount_Balance.findUnique

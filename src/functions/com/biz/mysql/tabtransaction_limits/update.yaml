@@ -1,0 +1,12 @@
+summary: Update tabTransaction_Limits
+tasks:
+  - id: mysql_tabtransaction_limits_update
+    fn: com.gs.datastore
+    args:
+      datasource: mysql
+      data:
+        where:
+          name: <% inputs.params.name %>
+        data: <% inputs.body %>
+      config:
+        method: tabTransaction_Limits.update

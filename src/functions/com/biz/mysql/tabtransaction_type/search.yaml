@@ -1,0 +1,9 @@
+summary: Fetch many tabTransaction_Type
+tasks:
+  - id: mysql_tabtransaction_type_search
+    fn: com.gs.datastore
+    args:
+      datasource: mysql
+      data: <% inputs.body %>
+      config:
+        method: tabTransaction_Type.findMany

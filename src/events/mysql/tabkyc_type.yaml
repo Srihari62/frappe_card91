@@ -1,0 +1,88 @@
+# ONE
+/mysql/tabkyc_type/:name.http.get:
+  summary: Fetch tabKYC_Type
+  description: Fetch tabKYC_Type from database
+  fn: com.biz.mysql.tabkyc_type.one
+  params:
+    - name: name
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# CREATE
+/mysql/tabkyc_type.http.post:
+  summary: Create a new tabKYC_Type
+  description: Create tabKYC_Type from database
+  fn: com.biz.mysql.tabkyc_type.create
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/mysql/tabKYC_Type'
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# UPDATE
+/mysql/tabkyc_type/:name.http.put:
+  summary: Update a tabKYC_Type
+  description: Update tabKYC_Type from database
+  fn: com.biz.mysql.tabkyc_type.update
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/mysql/tabKYC_Type'
+  params:
+    - name: name
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# DELETE
+/mysql/tabkyc_type/:name.http.delete:
+  summary: Delete a tabKYC_Type
+  description: Delete tabKYC_Type from database
+  fn: com.biz.mysql.tabkyc_type.delete
+  params:
+    - name: name
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# SEARCH
+/mysql/tabkyc_type/search.http.post:
+  summary: Fetch multiple tabKYC_Type
+  description: Fetch multiple tabKYC_Type from database
+  fn: com.biz.mysql.tabkyc_type.search
+  body:
+    content:
+      application/json:
+        schema:
+          type: object
+  responses:
+    content:
+      application/json:
+        schema:
+          type: array
+

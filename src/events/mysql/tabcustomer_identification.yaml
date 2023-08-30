@@ -1,0 +1,88 @@
+# ONE
+/mysql/tabcustomer_identification/:name.http.get:
+  summary: Fetch tabCustomer_Identification
+  description: Fetch tabCustomer_Identification from database
+  fn: com.biz.mysql.tabcustomer_identification.one
+  params:
+    - name: name
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# CREATE
+/mysql/tabcustomer_identification.http.post:
+  summary: Create a new tabCustomer_Identification
+  description: Create tabCustomer_Identification from database
+  fn: com.biz.mysql.tabcustomer_identification.create
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/mysql/tabCustomer_Identification'
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# UPDATE
+/mysql/tabcustomer_identification/:name.http.put:
+  summary: Update a tabCustomer_Identification
+  description: Update tabCustomer_Identification from database
+  fn: com.biz.mysql.tabcustomer_identification.update
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/mysql/tabCustomer_Identification'
+  params:
+    - name: name
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# DELETE
+/mysql/tabcustomer_identification/:name.http.delete:
+  summary: Delete a tabCustomer_Identification
+  description: Delete tabCustomer_Identification from database
+  fn: com.biz.mysql.tabcustomer_identification.delete
+  params:
+    - name: name
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# SEARCH
+/mysql/tabcustomer_identification/search.http.post:
+  summary: Fetch multiple tabCustomer_Identification
+  description: Fetch multiple tabCustomer_Identification from database
+  fn: com.biz.mysql.tabcustomer_identification.search
+  body:
+    content:
+      application/json:
+        schema:
+          type: object
+  responses:
+    content:
+      application/json:
+        schema:
+          type: array
+

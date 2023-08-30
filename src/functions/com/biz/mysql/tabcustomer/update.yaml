@@ -1,0 +1,12 @@
+summary: Update tabCustomer
+tasks:
+  - id: mysql_tabcustomer_update
+    fn: com.gs.datastore
+    args:
+      datasource: mysql
+      data:
+        where:
+          id: <% parseInt(inputs.params.id) %>
+        data: <% inputs.body %>
+      config:
+        method: tabCustomer.update

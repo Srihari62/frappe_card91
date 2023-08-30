@@ -1,0 +1,9 @@
+summary: Fetch many tabCustomer_Account_Balance
+tasks:
+  - id: mysql_tabcustomer_account_balance_search
+    fn: com.gs.datastore
+    args:
+      datasource: mysql
+      data: <% inputs.body %>
+      config:
+        method: tabCustomer_Account_Balance.findMany

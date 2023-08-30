@@ -1,0 +1,12 @@
+summary: Update tabCustomer_Transaction_Freeze
+tasks:
+  - id: mysql_tabcustomer_transaction_freeze_update
+    fn: com.gs.datastore
+    args:
+      datasource: mysql
+      data:
+        where:
+          name: <% inputs.params.name %>
+        data: <% inputs.body %>
+      config:
+        method: tabCustomer_Transaction_Freeze.update

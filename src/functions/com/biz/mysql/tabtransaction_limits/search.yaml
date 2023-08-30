@@ -1,0 +1,9 @@
+summary: Fetch many tabTransaction_Limits
+tasks:
+  - id: mysql_tabtransaction_limits_search
+    fn: com.gs.datastore
+    args:
+      datasource: mysql
+      data: <% inputs.body %>
+      config:
+        method: tabTransaction_Limits.findMany

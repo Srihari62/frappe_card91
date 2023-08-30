@@ -1,0 +1,11 @@
+summary: Delete tabTransaction_Type
+tasks:
+  - id: mysql_tabtransaction_type_delete
+    fn: com.gs.datastore
+    args:
+      datasource: mysql
+      data:
+        where:
+          name: <% inputs.params.name %>
+      config:
+        method: tabTransaction_Type.delete

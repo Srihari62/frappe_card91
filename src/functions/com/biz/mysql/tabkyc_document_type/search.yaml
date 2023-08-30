@@ -1,0 +1,9 @@
+summary: Fetch many tabKYC_Document_Type
+tasks:
+  - id: mysql_tabkyc_document_type_search
+    fn: com.gs.datastore
+    args:
+      datasource: mysql
+      data: <% inputs.body %>
+      config:
+        method: tabKYC_Document_Type.findMany

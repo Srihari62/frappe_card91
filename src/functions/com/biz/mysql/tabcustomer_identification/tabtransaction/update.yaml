@@ -1,0 +1,12 @@
+summary: Update tabTransaction
+tasks:
+  - id: mysql_tabtransaction_update
+    fn: com.gs.datastore
+    args:
+      datasource: mysql
+      data:
+        where:
+          name: <% inputs.params.name %>
+        data: <% inputs.body %>
+      config:
+        method: tabTransaction.update

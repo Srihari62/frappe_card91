@@ -1,0 +1,850 @@
+tabCustomer:
+  type: object
+  properties:
+    name:
+      type: string
+      nullable: true
+    creation:
+      type: string
+      format: date-time
+      nullable: true
+    modified:
+      type: string
+      format: date-time
+      nullable: true
+    modified_by:
+      type: string
+      nullable: true
+    owner:
+      type: string
+      nullable: true
+    docstatus:
+      type: integer
+      default: 0
+    full_name:
+      type: string
+      nullable: true
+    first_name:
+      type: string
+      nullable: true
+    last_name:
+      type: string
+      nullable: true
+    kyc_type:
+      type: string
+      nullable: true
+    kyc_mode:
+      type: string
+      nullable: true
+    kyc_validity:
+      type: string
+      format: date-time
+      nullable: true
+    date_of_birth:
+      type: string
+      format: date-time
+      nullable: true
+    contact_details:
+      type: string
+      nullable: true
+    risk_profile:
+      type: string
+      nullable: true
+    transaction_risk_profile:
+      type: string
+      nullable: true
+    status:
+      type: string
+      nullable: true
+    user_tags:
+      type: string
+      nullable: true
+    comments:
+      type: string
+      nullable: true
+    assign:
+      type: string
+      nullable: true
+    liked_by:
+      type: string
+      nullable: true
+tabAccount:
+  type: object
+  properties:
+    name:
+      type: string
+      nullable: true
+    creation:
+      type: string
+      format: date-time
+      nullable: true
+    modified:
+      type: string
+      format: date-time
+      nullable: true
+    modified_by:
+      type: string
+      nullable: true
+    owner:
+      type: string
+      nullable: true
+    docstatus:
+      type: integer
+      default: 0
+    business:
+      type: string
+      nullable: true
+    tsp:
+      type: string
+      nullable: true
+    account_number:
+      type: string
+      nullable: true
+    account_holder_name:
+      type: string
+      nullable: true
+    account_type:
+      type: string
+      nullable: true
+    expiry_date:
+      type: string
+      format: date-time
+      nullable: true
+    is_foreign_transactions_allowed:
+      type: integer
+      default: 0
+    enabled:
+      type: integer
+      default: 1
+    user_tags:
+      type: string
+      nullable: true
+    comments:
+      type: string
+      nullable: true
+    assign:
+      type: string
+      nullable: true
+    liked_by:
+      type: string
+      nullable: true
+    customerId:
+      type: integer
+tabTransaction_Type:
+  type: object
+  properties:
+    name:
+      type: string
+    creation:
+      type: string
+      format: date-time
+      nullable: true
+    modified:
+      type: string
+      format: date-time
+      nullable: true
+    modified_by:
+      type: string
+      nullable: true
+    owner:
+      type: string
+      nullable: true
+    docstatus:
+      type: integer
+      default: 0
+    idx:
+      type: integer
+      default: 0
+    title:
+      type: string
+      nullable: true
+    apply_rules:
+      type: integer
+      default: 1
+    mandatory_fields:
+      type: string
+      nullable: true
+    json:
+      type: string
+      nullable: true
+    user_tags:
+      type: string
+      nullable: true
+    comments:
+      type: string
+      nullable: true
+    assign:
+      type: string
+      nullable: true
+    liked_by:
+      type: string
+      nullable: true
+tabCustomer_Transaction_Freeze:
+  type: object
+  properties:
+    name:
+      type: string
+    creation:
+      type: string
+      format: date-time
+      nullable: true
+    modified:
+      type: string
+      format: date-time
+      nullable: true
+    modified_by:
+      type: string
+      nullable: true
+    owner:
+      type: string
+      nullable: true
+    docstatus:
+      type: integer
+      default: 0
+    idx:
+      type: integer
+      default: 0
+    transaction_type:
+      type: string
+      nullable: true
+    freezed:
+      type: integer
+      default: 0
+    parent:
+      type: string
+      nullable: true
+    parentfield:
+      type: string
+      nullable: true
+    parenttype:
+      type: string
+      nullable: true
+tabCustomer_Identification:
+  type: object
+  properties:
+    name:
+      type: string
+    creation:
+      type: string
+      format: date-time
+      nullable: true
+    modified:
+      type: string
+      format: date-time
+      nullable: true
+    modified_by:
+      type: string
+      nullable: true
+    owner:
+      type: string
+      nullable: true
+    docstatus:
+      type: integer
+      default: 0
+    idx:
+      type: integer
+      default: 0
+    kyc_type:
+      type: string
+      nullable: true
+    primary_identifier:
+      type: string
+      nullable: true
+    secondary_identifier:
+      type: string
+      nullable: true
+    enabled:
+      type: integer
+      default: 1
+    user_tags:
+      type: string
+      nullable: true
+    comments:
+      type: string
+      nullable: true
+    assign:
+      type: string
+      nullable: true
+    liked_by:
+      type: string
+      nullable: true
+tabCustomer_Account_Balance:
+  type: object
+  properties:
+    name:
+      type: string
+    creation:
+      type: string
+      format: date-time
+      nullable: true
+    modified:
+      type: string
+      format: date-time
+      nullable: true
+    modified_by:
+      type: string
+      nullable: true
+    owner:
+      type: string
+      nullable: true
+    docstatus:
+      type: integer
+      default: 0
+    idx:
+      type: integer
+      default: 0
+    account_type:
+      type: string
+      nullable: true
+    account:
+      type: string
+      nullable: true
+    balance:
+      type: number
+      default: 0
+    user_tags:
+      type: string
+      nullable: true
+    comments:
+      type: string
+      nullable: true
+    assign:
+      type: string
+      nullable: true
+    liked_by:
+      type: string
+      nullable: true
+tabCustomer_Transaction_Limits:
+  type: object
+  properties:
+    name:
+      type: string
+    creation:
+      type: string
+      format: date-time
+      nullable: true
+    modified:
+      type: string
+      format: date-time
+      nullable: true
+    modified_by:
+      type: string
+      nullable: true
+    owner:
+      type: string
+      nullable: true
+    docstatus:
+      type: integer
+      default: 0
+    idx:
+      type: integer
+      default: 0
+    customer:
+      type: string
+      nullable: true
+    rule_name:
+      type: string
+      nullable: true
+    beneficiary:
+      type: string
+      nullable: true
+    duration:
+      type: string
+      nullable: true
+    period_start:
+      type: string
+      format: date-time
+      nullable: true
+    current_limit_value:
+      type: number
+      default: 0
+    limit_value:
+      type: number
+      default: 0
+    remaining_limit_value:
+      type: number
+      default: 0
+    user_tags:
+      type: string
+      nullable: true
+    comments:
+      type: string
+      nullable: true
+    assign:
+      type: string
+      nullable: true
+    liked_by:
+      type: string
+      nullable: true
+tabCustomer_Balance_Limits:
+  type: object
+  properties:
+    name:
+      type: string
+    creation:
+      type: string
+      format: date-time
+      nullable: true
+    modified:
+      type: string
+      format: date-time
+      nullable: true
+    modified_by:
+      type: string
+      nullable: true
+    owner:
+      type: string
+      nullable: true
+    docstatus:
+      type: integer
+      default: 0
+    idx:
+      type: integer
+      default: 0
+    customer:
+      type: string
+      nullable: true
+    rule_name:
+      type: string
+      nullable: true
+    current_balance:
+      type: number
+      default: 0
+    balance:
+      type: number
+      default: 0
+    remaining_balance:
+      type: number
+      default: 0
+    user_tags:
+      type: string
+      nullable: true
+    comments:
+      type: string
+      nullable: true
+    assign:
+      type: string
+      nullable: true
+    liked_by:
+      type: string
+      nullable: true
+tabTransaction:
+  type: object
+  properties:
+    name:
+      type: string
+    creation:
+      type: string
+      format: date-time
+      nullable: true
+    modified:
+      type: string
+      format: date-time
+      nullable: true
+    modified_by:
+      type: string
+      nullable: true
+    owner:
+      type: string
+      nullable: true
+    docstatus:
+      type: integer
+      default: 0
+    idx:
+      type: integer
+      default: 0
+    account:
+      type: string
+      nullable: true
+    account_type:
+      type: string
+      nullable: true
+    customer:
+      type: string
+      nullable: true
+    tsp:
+      type: string
+      nullable: true
+    transaction_type:
+      type: string
+      nullable: true
+    dr_cr:
+      type: string
+      nullable: true
+    beneficiary:
+      type: string
+      nullable: true
+    amount:
+      type: number
+      default: 0
+    channel:
+      type: string
+      default: '0'
+      nullable: true
+    purpose:
+      type: string
+      nullable: true
+    original_transaction_number:
+      type: string
+      nullable: true
+    original_transaction_date:
+      type: string
+      nullable: true
+    transaction_currency:
+      type: string
+      nullable: true
+    exchange_rate:
+      type: number
+      default: 0
+    additional_transaction_number:
+      type: string
+      nullable: true
+    user_tags:
+      type: string
+      nullable: true
+    comments:
+      type: string
+      nullable: true
+    assign:
+      type: string
+      nullable: true
+    liked_by:
+      type: string
+      nullable: true
+tabTransaction_Limits:
+  type: object
+  properties:
+    name:
+      type: string
+    creation:
+      type: string
+      format: date-time
+      nullable: true
+    modified:
+      type: string
+      format: date-time
+      nullable: true
+    modified_by:
+      type: string
+      nullable: true
+    owner:
+      type: string
+    docstatus:
+      type: integer
+      default: 0
+    idx:
+      type: integer
+      default: 0
+    limit_type:
+      type: string
+      nullable: true
+    enabled:
+      type: integer
+      default: 1
+    kyc_type:
+      type: string
+      nullable: true
+    duration:
+      type: string
+      nullable: true
+    dr_cr:
+      type: string
+      nullable: true
+    limit_value:
+      type: number
+      default: 0
+    per_beneficiary:
+      type: integer
+      default: 0
+    aggregate_field:
+      type: string
+      default: amount
+      nullable: true
+    aggregate_function:
+      type: string
+      nullable: true
+    rule_json:
+      type: string
+      nullable: true
+    amended_from:
+      type: string
+      nullable: true
+    user_tags:
+      type: string
+      nullable: true
+    comments:
+      type: string
+      nullable: true
+    assign:
+      type: string
+      nullable: true
+    liked_by:
+      type: string
+      nullable: true
+tabAccount_Balance:
+  type: object
+  properties:
+    name:
+      type: string
+    creation:
+      type: string
+      format: date-time
+      nullable: true
+    modified:
+      type: string
+      format: date-time
+      nullable: true
+    modified_by:
+      type: string
+      nullable: true
+    owner:
+      type: string
+    docstatus:
+      type: integer
+      default: 0
+    idx:
+      type: integer
+      default: 0
+    limit_type:
+      type: string
+      nullable: true
+    enabled:
+      type: integer
+      default: 1
+    kyc_type:
+      type: string
+      nullable: true
+    balance:
+      type: number
+      default: 0
+    rule_json:
+      type: string
+      nullable: true
+    amended_from:
+      type: string
+      nullable: true
+    user_tags:
+      type: string
+      nullable: true
+    comments:
+      type: string
+      nullable: true
+    assign:
+      type: string
+      nullable: true
+    liked_by:
+      type: string
+      nullable: true
+tabTSP_List:
+  type: object
+  properties:
+    name:
+      type: string
+    creation:
+      type: string
+      format: date-time
+      nullable: true
+    modified:
+      type: string
+      format: date-time
+      nullable: true
+    modified_by:
+      type: string
+      nullable: true
+    owner:
+      type: string
+      nullable: true
+    docstatus:
+      type: integer
+      default: 0
+    idx:
+      type: integer
+      default: 0
+    tsp:
+      type: string
+      nullable: true
+    parent:
+      type: string
+      nullable: true
+    parentfield:
+      type: string
+      nullable: true
+    parenttype:
+      type: string
+      nullable: true
+tabKYC_Type:
+  type: object
+  properties:
+    name:
+      type: string
+    creation:
+      type: string
+      format: date-time
+      nullable: true
+    modified:
+      type: string
+      format: date-time
+      nullable: true
+    modified_by:
+      type: string
+      nullable: true
+    owner:
+      type: string
+      nullable: true
+    docstatus:
+      type: integer
+      default: 0
+    idx:
+      type: integer
+      default: 0
+    title:
+      type: string
+      nullable: true
+    json:
+      type: string
+      nullable: true
+    user_tags:
+      type: string
+      nullable: true
+    comments:
+      type: string
+      nullable: true
+    assign:
+      type: string
+      nullable: true
+    liked_by:
+      type: string
+      nullable: true
+tabKYC_Validity:
+  type: object
+  properties:
+    name:
+      type: string
+    creation:
+      type: string
+      format: date-time
+      nullable: true
+    modified:
+      type: string
+      format: date-time
+      nullable: true
+    modified_by:
+      type: string
+      nullable: true
+    owner:
+      type: string
+      nullable: true
+    docstatus:
+      type: integer
+      default: 0
+    idx:
+      type: integer
+      default: 0
+    kyc_type:
+      type: string
+      nullable: true
+    risk_profile:
+      type: string
+      nullable: true
+    validity:
+      type: number
+      default: 0
+    user_tags:
+      type: string
+      nullable: true
+    comments:
+      type: string
+      nullable: true
+    assign:
+      type: string
+      nullable: true
+    liked_by:
+      type: string
+      nullable: true
+tabKYC_Document_Type:
+  type: object
+  properties:
+    name:
+      type: string
+    creation:
+      type: string
+      format: date-time
+      nullable: true
+    modified:
+      type: string
+      format: date-time
+      nullable: true
+    modified_by:
+      type: string
+      nullable: true
+    owner:
+      type: string
+      nullable: true
+    docstatus:
+      type: integer
+      default: 0
+    idx:
+      type: integer
+      default: 0
+    title:
+      type: string
+      nullable: true
+    length:
+      type: integer
+      default: 0
+    user_tags:
+      type: string
+      nullable: true
+    comments:
+      type: string
+      nullable: true
+    assign:
+      type: string
+      nullable: true
+    liked_by:
+      type: string
+      nullable: true
+tabKYC_Document:
+  type: object
+  properties:
+    name:
+      type: string
+    creation:
+      type: string
+      format: date-time
+      nullable: true
+    modified:
+      type: string
+      format: date-time
+      nullable: true
+    modified_by:
+      type: string
+      nullable: true
+    owner:
+      type: string
+      nullable: true
+    docstatus:
+      type: integer
+      default: 0
+    idx:
+      type: integer
+      default: 0
+    title:
+      type: string
+      nullable: true
+    number:
+      type: string
+      nullable: true
+    expiry_date:
+      type: string
+      format: date-time
+      nullable: true
+    parent:
+      type: string
+      nullable: true
+    parentfield:
+      type: string
+      nullable: true
+    parenttype:
+      type: string
+      nullable: true

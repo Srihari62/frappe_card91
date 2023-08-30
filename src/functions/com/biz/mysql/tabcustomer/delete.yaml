@@ -1,0 +1,11 @@
+summary: Delete tabCustomer
+tasks:
+  - id: mysql_tabcustomer_delete
+    fn: com.gs.datastore
+    args:
+      datasource: mysql
+      data:
+        where:
+          id: <% parseInt(inputs.params.id) %>
+      config:
+        method: tabCustomer.delete

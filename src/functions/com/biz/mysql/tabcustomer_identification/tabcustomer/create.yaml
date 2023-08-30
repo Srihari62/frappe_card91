@@ -1,0 +1,10 @@
+summary: Create tabCustomer
+tasks:
+  - id: mysql_tabcustomer_create
+    fn: com.gs.datastore
+    args:
+      datasource: mysql
+      data:
+        data: <% inputs.body %>
+      config:
+        method: tabCustomer.create

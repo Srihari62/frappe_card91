@@ -1,0 +1,89 @@
+# ONE
+/api/resource/account/:id.http.get:
+  summary: Fetch tabAccount
+  description: Fetch tabAccount from database
+  fn: com.biz.mysql.tabaccount.one
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# CREATE
+/api/resource/account.http.post:
+  summary: Create a new tabAccount
+  description: Create tabAccount from database
+  fn: com.biz.mysql.tabaccount.create
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/mysql/tabAccount'
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# UPDATE
+/api/resource/account/:id.http.put:
+  summary: Update a tabAccount
+  description: Update tabAccount from database
+  fn: com.biz.mysql.tabaccount.update
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/mysql/tabAccount'
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# DELETE
+/api/resource/account/:id.http.delete:
+  summary: Delete a tabAccount
+  description: Delete tabAccount from database
+  fn: com.biz.mysql.tabaccount.delete
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# SEARCH
+/api/resource/account.http.get:
+  summary: Fetch multiple tabAccount
+  description: Fetch multiple tabAccount from database
+  fn: com.biz.mysql.tabaccount.search
+  body:
+    content:
+      application/json:
+        schema:
+          type: object
+  responses:
+    content:
+      application/json:
+        schema:
+          type: array
+

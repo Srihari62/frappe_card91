@@ -1,0 +1,88 @@
+# ONE
+/mysql/tabcustomer_balance_limits/:name.http.get:
+  summary: Fetch tabCustomer_Balance_Limits
+  description: Fetch tabCustomer_Balance_Limits from database
+  fn: com.biz.mysql.tabcustomer_balance_limits.one
+  params:
+    - name: name
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# CREATE
+/mysql/tabcustomer_balance_limits.http.post:
+  summary: Create a new tabCustomer_Balance_Limits
+  description: Create tabCustomer_Balance_Limits from database
+  fn: com.biz.mysql.tabcustomer_balance_limits.create
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/mysql/tabCustomer_Balance_Limits'
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# UPDATE
+/mysql/tabcustomer_balance_limits/:name.http.put:
+  summary: Update a tabCustomer_Balance_Limits
+  description: Update tabCustomer_Balance_Limits from database
+  fn: com.biz.mysql.tabcustomer_balance_limits.update
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/mysql/tabCustomer_Balance_Limits'
+  params:
+    - name: name
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# DELETE
+/mysql/tabcustomer_balance_limits/:name.http.delete:
+  summary: Delete a tabCustomer_Balance_Limits
+  description: Delete tabCustomer_Balance_Limits from database
+  fn: com.biz.mysql.tabcustomer_balance_limits.delete
+  params:
+    - name: name
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# SEARCH
+/mysql/tabcustomer_balance_limits/search.http.post:
+  summary: Fetch multiple tabCustomer_Balance_Limits
+  description: Fetch multiple tabCustomer_Balance_Limits from database
+  fn: com.biz.mysql.tabcustomer_balance_limits.search
+  body:
+    content:
+      application/json:
+        schema:
+          type: object
+  responses:
+    content:
+      application/json:
+        schema:
+          type: array
+

@@ -1,0 +1,29 @@
+  summary: fetching account balance and transaction limits
+  tasks:
+    - id: account_balance
+      fn: com.gs.datastore
+      args: 
+        datasource: mysql
+        data:
+          where:
+            name: <% inputs.params.name %>
+        config:
+          method: tabAccount_Balance.findUnique
+
+    - id: transaction_limits
+      fn: com.gs.datastore
+      args: 
+        datasource: mysql
+        data:
+          where:
+            name: <% inputs.params.name %>
+        config:
+          method: tabTransaction_Limits.findUnique
+
+    - id: step2
+      fn: com.gs.transform
+      args: 
+        data: 
+          account_balance : <% outputs.account_balance.data %> 
+          transaction_limits : <% outputs.transaction_limits.data %>
+

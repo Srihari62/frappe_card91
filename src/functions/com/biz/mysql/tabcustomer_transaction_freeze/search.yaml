@@ -1,0 +1,9 @@
+summary: Fetch many tabCustomer_Transaction_Freeze
+tasks:
+  - id: mysql_tabcustomer_transaction_freeze_search
+    fn: com.gs.datastore
+    args:
+      datasource: mysql
+      data: <% inputs.body %>
+      config:
+        method: tabCustomer_Transaction_Freeze.findMany

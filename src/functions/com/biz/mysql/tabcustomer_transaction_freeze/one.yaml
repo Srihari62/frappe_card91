@@ -1,0 +1,11 @@
+summary: Fetch tabCustomer_Transaction_Freeze
+tasks:
+  - id: mysql_tabcustomer_transaction_freeze_one
+    fn: com.gs.datastore
+    args:
+      datasource: mysql
+      data:
+        where:
+          name: <% inputs.params.name %>
+      config:
+        method: tabCustomer_Transaction_Freeze.findUnique

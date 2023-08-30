@@ -1,0 +1,88 @@
+# ONE
+/mysql/tabkyc_document/:name.http.get:
+  summary: Fetch tabKYC_Document
+  description: Fetch tabKYC_Document from database
+  fn: com.biz.mysql.tabkyc_document.one
+  params:
+    - name: name
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# CREATE
+/mysql/tabkyc_document.http.post:
+  summary: Create a new tabKYC_Document
+  description: Create tabKYC_Document from database
+  fn: com.biz.mysql.tabkyc_document.create
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/mysql/tabKYC_Document'
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# UPDATE
+/mysql/tabkyc_document/:name.http.put:
+  summary: Update a tabKYC_Document
+  description: Update tabKYC_Document from database
+  fn: com.biz.mysql.tabkyc_document.update
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/mysql/tabKYC_Document'
+  params:
+    - name: name
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# DELETE
+/mysql/tabkyc_document/:name.http.delete:
+  summary: Delete a tabKYC_Document
+  description: Delete tabKYC_Document from database
+  fn: com.biz.mysql.tabkyc_document.delete
+  params:
+    - name: name
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# SEARCH
+/mysql/tabkyc_document/search.http.post:
+  summary: Fetch multiple tabKYC_Document
+  description: Fetch multiple tabKYC_Document from database
+  fn: com.biz.mysql.tabkyc_document.search
+  body:
+    content:
+      application/json:
+        schema:
+          type: object
+  responses:
+    content:
+      application/json:
+        schema:
+          type: array
+

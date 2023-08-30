@@ -1,0 +1,9 @@
+summary: Fetch many tabCustomer_Identification
+tasks:
+  - id: mysql_tabcustomer_identification_search
+    fn: com.gs.datastore
+    args:
+      datasource: mysql
+      data: <% inputs.body %>
+      config:
+        method: tabCustomer_Identification.findMany

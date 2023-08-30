@@ -1,0 +1,41 @@
+summary: Fetch many tabAccount
+tasks:
+  - id: mysql_tabaccount_search
+    fn: com.gs.datastore
+    args:
+      datasource: mysql
+      data:
+        where:  <% inputs.body %>
+        select: |
+          <js% 
+            let strList = inputs.query.fields ? inputs.query.fields.split(',') : [];
+            if (!strList.includes("id")) {
+              strList.push("id");
+            }
+            if (!strList.includes("name")) {
+              strList.push("name");
+            }
+            let obj = {}
+            for (let i of strList) {
+                obj[i] = true
+            }
+            return obj
+          %>
+      config:
+        method: tabAccount.findMany
+
+
+
+
+# summary: Fetch many tabAccount
+# tasks:
+#   - id: mysql_tabaccount_search
+#     fn: com.gs.datastore
+#     args:
+#       datasource: mysql
+#       data:
+#         where:
+#           account_type: <% inputs.body.account_type %>
+#           account_number: <% inputs.body.account_number %>
+#       config:
+#         method: tabAccount.findMany

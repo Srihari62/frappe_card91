@@ -1,0 +1,88 @@
+# ONE
+/mysql/tabcustomer_account_balance/:name.http.get:
+  summary: Fetch tabCustomer_Account_Balance
+  description: Fetch tabCustomer_Account_Balance from database
+  fn: com.biz.mysql.tabcustomer_account_balance.one
+  params:
+    - name: name
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# CREATE
+/mysql/tabcustomer_account_balance.http.post:
+  summary: Create a new tabCustomer_Account_Balance
+  description: Create tabCustomer_Account_Balance from database
+  fn: com.biz.mysql.tabcustomer_account_balance.create
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/mysql/tabCustomer_Account_Balance'
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# UPDATE
+/mysql/tabcustomer_account_balance/:name.http.put:
+  summary: Update a tabCustomer_Account_Balance
+  description: Update tabCustomer_Account_Balance from database
+  fn: com.biz.mysql.tabcustomer_account_balance.update
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/mysql/tabCustomer_Account_Balance'
+  params:
+    - name: name
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# DELETE
+/mysql/tabcustomer_account_balance/:name.http.delete:
+  summary: Delete a tabCustomer_Account_Balance
+  description: Delete tabCustomer_Account_Balance from database
+  fn: com.biz.mysql.tabcustomer_account_balance.delete
+  params:
+    - name: name
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# SEARCH
+/mysql/tabcustomer_account_balance/search.http.post:
+  summary: Fetch multiple tabCustomer_Account_Balance
+  description: Fetch multiple tabCustomer_Account_Balance from database
+  fn: com.biz.mysql.tabcustomer_account_balance.search
+  body:
+    content:
+      application/json:
+        schema:
+          type: object
+  responses:
+    content:
+      application/json:
+        schema:
+          type: array
+

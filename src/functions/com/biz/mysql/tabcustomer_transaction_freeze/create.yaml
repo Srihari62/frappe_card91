@@ -1,0 +1,10 @@
+summary: Create tabCustomer_Transaction_Freeze
+tasks:
+  - id: mysql_tabcustomer_transaction_freeze_create
+    fn: com.gs.datastore
+    args:
+      datasource: mysql
+      data:
+        data: <% inputs.body %>
+      config:
+        method: tabCustomer_Transaction_Freeze.create

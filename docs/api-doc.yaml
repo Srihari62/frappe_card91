@@ -1,0 +1,2129 @@
+openapi: 3.0.0
+info:
+  version: 0.0.1
+  title: "Godspeed: Sample Microservice"
+  description: Sample API calls demonstrating the functionality of Godspeed framework
+  termsOfService: http://swagger.io/terms/
+  contact:
+    name: Mindgrep Technologies Pvt Ltd
+    email: talktous@mindgrep.com
+    url: https://docs.mindgrep.com/docs/microservices/intro
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - url: http://localhost:3000
+paths:
+  /helloworld:
+    get:
+      summary: hello world
+      description: print hello world
+      parameters:
+        - name: status
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Returns the greeting.
+          schema:
+            type: string
+        "400":
+          description: Invalid status value
+  /http:
+    get:
+      summary: hello world
+      description: print hello world
+      parameters:
+        - name: status
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Returns the greeting.
+          schema:
+            type: string
+        "400":
+          description: Invalid status value
+  "/mysql/tabaccount_balance/{name}":
+    get:
+      summary: Fetch tabAccount_Balance
+      description: Fetch tabAccount_Balance from database
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+    put:
+      summary: Update a tabAccount_Balance
+      description: Update tabAccount_Balance from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/mysql/tabAccount_Balance"
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+    delete:
+      summary: Delete a tabAccount_Balance
+      description: Delete tabAccount_Balance from database
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+  /mysql/tabaccount_balance:
+    post:
+      summary: Create a new tabAccount_Balance
+      description: Create tabAccount_Balance from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/mysql/tabAccount_Balance"
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+  /mysql/tabaccount_balance/search:
+    post:
+      summary: Fetch multiple tabAccount_Balance
+      description: Fetch multiple tabAccount_Balance from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        content:
+          application/json:
+            schema:
+              type: array
+  "/api/resource/account/{id}":
+    get:
+      summary: Fetch tabAccount
+      description: Fetch tabAccount from database
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+    put:
+      summary: Update a tabAccount
+      description: Update tabAccount from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/mysql/tabAccount"
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+    delete:
+      summary: Delete a tabAccount
+      description: Delete tabAccount from database
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+  /api/resource/account:
+    post:
+      summary: Create a new tabAccount
+      description: Create tabAccount from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/mysql/tabAccount"
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+    get:
+      summary: Fetch multiple tabAccount
+      description: Fetch multiple tabAccount from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        content:
+          application/json:
+            schema:
+              type: array
+  "/mysql/tabcustomer_account_balance/{name}":
+    get:
+      summary: Fetch tabCustomer_Account_Balance
+      description: Fetch tabCustomer_Account_Balance from database
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+    put:
+      summary: Update a tabCustomer_Account_Balance
+      description: Update tabCustomer_Account_Balance from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/mysql/tabCustomer_Account_Balance"
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+    delete:
+      summary: Delete a tabCustomer_Account_Balance
+      description: Delete tabCustomer_Account_Balance from database
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+  /mysql/tabcustomer_account_balance:
+    post:
+      summary: Create a new tabCustomer_Account_Balance
+      description: Create tabCustomer_Account_Balance from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/mysql/tabCustomer_Account_Balance"
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+  /mysql/tabcustomer_account_balance/search:
+    post:
+      summary: Fetch multiple tabCustomer_Account_Balance
+      description: Fetch multiple tabCustomer_Account_Balance from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        content:
+          application/json:
+            schema:
+              type: array
+  "/mysql/tabcustomer_balance_limits/{name}":
+    get:
+      summary: Fetch tabCustomer_Balance_Limits
+      description: Fetch tabCustomer_Balance_Limits from database
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+    put:
+      summary: Update a tabCustomer_Balance_Limits
+      description: Update tabCustomer_Balance_Limits from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/mysql/tabCustomer_Balance_Limits"
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+    delete:
+      summary: Delete a tabCustomer_Balance_Limits
+      description: Delete tabCustomer_Balance_Limits from database
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+  /mysql/tabcustomer_balance_limits:
+    post:
+      summary: Create a new tabCustomer_Balance_Limits
+      description: Create tabCustomer_Balance_Limits from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/mysql/tabCustomer_Balance_Limits"
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+  /mysql/tabcustomer_balance_limits/search:
+    post:
+      summary: Fetch multiple tabCustomer_Balance_Limits
+      description: Fetch multiple tabCustomer_Balance_Limits from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        content:
+          application/json:
+            schema:
+              type: array
+  "/mysql/tabcustomer_identification/{name}":
+    get:
+      summary: Fetch tabCustomer_Identification
+      description: Fetch tabCustomer_Identification from database
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+    put:
+      summary: Update a tabCustomer_Identification
+      description: Update tabCustomer_Identification from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/mysql/tabCustomer_Identification"
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+    delete:
+      summary: Delete a tabCustomer_Identification
+      description: Delete tabCustomer_Identification from database
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+  /mysql/tabcustomer_identification:
+    post:
+      summary: Create a new tabCustomer_Identification
+      description: Create tabCustomer_Identification from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/mysql/tabCustomer_Identification"
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+  /mysql/tabcustomer_identification/search:
+    post:
+      summary: Fetch multiple tabCustomer_Identification
+      description: Fetch multiple tabCustomer_Identification from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        content:
+          application/json:
+            schema:
+              type: array
+  "/mysql/tabcustomer_transaction_freeze/{name}":
+    get:
+      summary: Fetch tabCustomer_Transaction_Freeze
+      description: Fetch tabCustomer_Transaction_Freeze from database
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+    put:
+      summary: Update a tabCustomer_Transaction_Freeze
+      description: Update tabCustomer_Transaction_Freeze from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/mysql/tabCustomer_Transaction_Freeze"
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+    delete:
+      summary: Delete a tabCustomer_Transaction_Freeze
+      description: Delete tabCustomer_Transaction_Freeze from database
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+  /mysql/tabcustomer_transaction_freeze:
+    post:
+      summary: Create a new tabCustomer_Transaction_Freeze
+      description: Create tabCustomer_Transaction_Freeze from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/mysql/tabCustomer_Transaction_Freeze"
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+  /mysql/tabcustomer_transaction_freeze/search:
+    post:
+      summary: Fetch multiple tabCustomer_Transaction_Freeze
+      description: Fetch multiple tabCustomer_Transaction_Freeze from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        content:
+          application/json:
+            schema:
+              type: array
+  "/mysql/tabcustomer_transaction_limits/{name}":
+    get:
+      summary: Fetch tabCustomer_Transaction_Limits
+      description: Fetch tabCustomer_Transaction_Limits from database
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+    put:
+      summary: Update a tabCustomer_Transaction_Limits
+      description: Update tabCustomer_Transaction_Limits from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/mysql/tabCustomer_Transaction_Limits"
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+    delete:
+      summary: Delete a tabCustomer_Transaction_Limits
+      description: Delete tabCustomer_Transaction_Limits from database
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+  /mysql/tabcustomer_transaction_limits:
+    post:
+      summary: Create a new tabCustomer_Transaction_Limits
+      description: Create tabCustomer_Transaction_Limits from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/mysql/tabCustomer_Transaction_Limits"
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+  /mysql/tabcustomer_transaction_limits/search:
+    post:
+      summary: Fetch multiple tabCustomer_Transaction_Limits
+      description: Fetch multiple tabCustomer_Transaction_Limits from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        content:
+          application/json:
+            schema:
+              type: array
+  "/mysql/tabcustomer/{id}":
+    get:
+      summary: Fetch tabCustomer
+      description: Fetch tabCustomer from database
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+    put:
+      summary: Update a tabCustomer
+      description: Update tabCustomer from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/mysql/tabCustomer"
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+    delete:
+      summary: Delete a tabCustomer
+      description: Delete tabCustomer from database
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+  /mysql/tabcustomer:
+    post:
+      summary: Create a new tabCustomer
+      description: Create tabCustomer from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/mysql/tabCustomer"
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+  /mysql/tabcustomer/search:
+    post:
+      summary: Fetch multiple tabCustomer
+      description: Fetch multiple tabCustomer from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        content:
+          application/json:
+            schema:
+              type: array
+  "/mysql/tabkyc_document_type/{name}":
+    get:
+      summary: Fetch tabKYC_Document_Type
+      description: Fetch tabKYC_Document_Type from database
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+    put:
+      summary: Update a tabKYC_Document_Type
+      description: Update tabKYC_Document_Type from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/mysql/tabKYC_Document_Type"
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+    delete:
+      summary: Delete a tabKYC_Document_Type
+      description: Delete tabKYC_Document_Type from database
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+  /mysql/tabkyc_document_type:
+    post:
+      summary: Create a new tabKYC_Document_Type
+      description: Create tabKYC_Document_Type from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/mysql/tabKYC_Document_Type"
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+  /mysql/tabkyc_document_type/search:
+    post:
+      summary: Fetch multiple tabKYC_Document_Type
+      description: Fetch multiple tabKYC_Document_Type from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        content:
+          application/json:
+            schema:
+              type: array
+  "/mysql/tabkyc_document/{name}":
+    get:
+      summary: Fetch tabKYC_Document
+      description: Fetch tabKYC_Document from database
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+    put:
+      summary: Update a tabKYC_Document
+      description: Update tabKYC_Document from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/mysql/tabKYC_Document"
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+    delete:
+      summary: Delete a tabKYC_Document
+      description: Delete tabKYC_Document from database
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+  /mysql/tabkyc_document:
+    post:
+      summary: Create a new tabKYC_Document
+      description: Create tabKYC_Document from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/mysql/tabKYC_Document"
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+  /mysql/tabkyc_document/search:
+    post:
+      summary: Fetch multiple tabKYC_Document
+      description: Fetch multiple tabKYC_Document from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        content:
+          application/json:
+            schema:
+              type: array
+  "/mysql/tabkyc_type/{name}":
+    get:
+      summary: Fetch tabKYC_Type
+      description: Fetch tabKYC_Type from database
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+    put:
+      summary: Update a tabKYC_Type
+      description: Update tabKYC_Type from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/mysql/tabKYC_Type"
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+    delete:
+      summary: Delete a tabKYC_Type
+      description: Delete tabKYC_Type from database
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+  /mysql/tabkyc_type:
+    post:
+      summary: Create a new tabKYC_Type
+      description: Create tabKYC_Type from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/mysql/tabKYC_Type"
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+  /mysql/tabkyc_type/search:
+    post:
+      summary: Fetch multiple tabKYC_Type
+      description: Fetch multiple tabKYC_Type from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        content:
+          application/json:
+            schema:
+              type: array
+  "/mysql/tabkyc_validity/{name}":
+    get:
+      summary: Fetch tabKYC_Validity
+      description: Fetch tabKYC_Validity from database
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+    put:
+      summary: Update a tabKYC_Validity
+      description: Update tabKYC_Validity from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/mysql/tabKYC_Validity"
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+    delete:
+      summary: Delete a tabKYC_Validity
+      description: Delete tabKYC_Validity from database
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+  /mysql/tabkyc_validity:
+    post:
+      summary: Create a new tabKYC_Validity
+      description: Create tabKYC_Validity from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/mysql/tabKYC_Validity"
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+  /mysql/tabkyc_validity/search:
+    post:
+      summary: Fetch multiple tabKYC_Validity
+      description: Fetch multiple tabKYC_Validity from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        content:
+          application/json:
+            schema:
+              type: array
+  "/mysql/tabtransaction_limits/{name}":
+    get:
+      summary: Fetch tabTransaction_Limits
+      description: Fetch tabTransaction_Limits from database
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+    put:
+      summary: Update a tabTransaction_Limits
+      description: Update tabTransaction_Limits from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/mysql/tabTransaction_Limits"
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+    delete:
+      summary: Delete a tabTransaction_Limits
+      description: Delete tabTransaction_Limits from database
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+  /mysql/tabtransaction_limits:
+    post:
+      summary: Create a new tabTransaction_Limits
+      description: Create tabTransaction_Limits from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/mysql/tabTransaction_Limits"
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+  /mysql/tabtransaction_limits/search:
+    post:
+      summary: Fetch multiple tabTransaction_Limits
+      description: Fetch multiple tabTransaction_Limits from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        content:
+          application/json:
+            schema:
+              type: array
+  "/mysql/tabtransaction_type/{name}":
+    get:
+      summary: Fetch tabTransaction_Type
+      description: Fetch tabTransaction_Type from database
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+    put:
+      summary: Update a tabTransaction_Type
+      description: Update tabTransaction_Type from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/mysql/tabTransaction_Type"
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+    delete:
+      summary: Delete a tabTransaction_Type
+      description: Delete tabTransaction_Type from database
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+  /mysql/tabtransaction_type:
+    post:
+      summary: Create a new tabTransaction_Type
+      description: Create tabTransaction_Type from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/mysql/tabTransaction_Type"
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+  /mysql/tabtransaction_type/search:
+    post:
+      summary: Fetch multiple tabTransaction_Type
+      description: Fetch multiple tabTransaction_Type from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        content:
+          application/json:
+            schema:
+              type: array
+  "/mysql/tabtransaction/{name}":
+    get:
+      summary: Fetch tabTransaction
+      description: Fetch tabTransaction from database
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+    put:
+      summary: Update a tabTransaction
+      description: Update tabTransaction from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/mysql/tabTransaction"
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+    delete:
+      summary: Delete a tabTransaction
+      description: Delete tabTransaction from database
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+  /mysql/tabtransaction:
+    post:
+      summary: Create a new tabTransaction
+      description: Create tabTransaction from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/mysql/tabTransaction"
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+  /mysql/tabtransaction/search:
+    post:
+      summary: Fetch multiple tabTransaction
+      description: Fetch multiple tabTransaction from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        content:
+          application/json:
+            schema:
+              type: array
+  "/mysql/tabtsp_list/{name}":
+    get:
+      summary: Fetch tabTSP_List
+      description: Fetch tabTSP_List from database
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+    put:
+      summary: Update a tabTSP_List
+      description: Update tabTSP_List from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/mysql/tabTSP_List"
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+    delete:
+      summary: Delete a tabTSP_List
+      description: Delete tabTSP_List from database
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+  /mysql/tabtsp_list:
+    post:
+      summary: Create a new tabTSP_List
+      description: Create tabTSP_List from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/mysql/tabTSP_List"
+      responses:
+        content:
+          application/json:
+            schema:
+              type: object
+  /mysql/tabtsp_list/search:
+    post:
+      summary: Fetch multiple tabTSP_List
+      description: Fetch multiple tabTSP_List from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        content:
+          application/json:
+            schema:
+              type: array
+  /mysql/tabtsp/search:
+    post:
+      summary: Fetch multiple tabUser
+      description: Fetch multiple tabUser from database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        content:
+          application/json:
+            schema:
+              type: array
+definitions:
+  mysql:
+    tabCustomer:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+        creation:
+          type: string
+          format: date-time
+          nullable: true
+        modified:
+          type: string
+          format: date-time
+          nullable: true
+        modified_by:
+          type: string
+          nullable: true
+        owner:
+          type: string
+          nullable: true
+        docstatus:
+          type: integer
+          default: 0
+        full_name:
+          type: string
+          nullable: true
+        first_name:
+          type: string
+          nullable: true
+        last_name:
+          type: string
+          nullable: true
+        kyc_type:
+          type: string
+          nullable: true
+        kyc_mode:
+          type: string
+          nullable: true
+        kyc_validity:
+          type: string
+          format: date-time
+          nullable: true
+        date_of_birth:
+          type: string
+          format: date-time
+          nullable: true
+        contact_details:
+          type: string
+          nullable: true
+        risk_profile:
+          type: string
+          nullable: true
+        transaction_risk_profile:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        user_tags:
+          type: string
+          nullable: true
+        comments:
+          type: string
+          nullable: true
+        assign:
+          type: string
+          nullable: true
+        liked_by:
+          type: string
+          nullable: true
+    tabAccount:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+        creation:
+          type: string
+          format: date-time
+          nullable: true
+        modified:
+          type: string
+          format: date-time
+          nullable: true
+        modified_by:
+          type: string
+          nullable: true
+        owner:
+          type: string
+          nullable: true
+        docstatus:
+          type: integer
+          default: 0
+        business:
+          type: string
+          nullable: true
+        tsp:
+          type: string
+          nullable: true
+        account_number:
+          type: string
+          nullable: true
+        account_holder_name:
+          type: string
+          nullable: true
+        account_type:
+          type: string
+          nullable: true
+        expiry_date:
+          type: string
+          format: date-time
+          nullable: true
+        is_foreign_transactions_allowed:
+          type: integer
+          default: 0
+        enabled:
+          type: integer
+          default: 1
+        user_tags:
+          type: string
+          nullable: true
+        comments:
+          type: string
+          nullable: true
+        assign:
+          type: string
+          nullable: true
+        liked_by:
+          type: string
+          nullable: true
+        customerId:
+          type: integer
+    tabTransaction_Type:
+      type: object
+      properties:
+        name:
+          type: string
+        creation:
+          type: string
+          format: date-time
+          nullable: true
+        modified:
+          type: string
+          format: date-time
+          nullable: true
+        modified_by:
+          type: string
+          nullable: true
+        owner:
+          type: string
+          nullable: true
+        docstatus:
+          type: integer
+          default: 0
+        idx:
+          type: integer
+          default: 0
+        title:
+          type: string
+          nullable: true
+        apply_rules:
+          type: integer
+          default: 1
+        mandatory_fields:
+          type: string
+          nullable: true
+        json:
+          type: string
+          nullable: true
+        user_tags:
+          type: string
+          nullable: true
+        comments:
+          type: string
+          nullable: true
+        assign:
+          type: string
+          nullable: true
+        liked_by:
+          type: string
+          nullable: true
+    tabCustomer_Transaction_Freeze:
+      type: object
+      properties:
+        name:
+          type: string
+        creation:
+          type: string
+          format: date-time
+          nullable: true
+        modified:
+          type: string
+          format: date-time
+          nullable: true
+        modified_by:
+          type: string
+          nullable: true
+        owner:
+          type: string
+          nullable: true
+        docstatus:
+          type: integer
+          default: 0
+        idx:
+          type: integer
+          default: 0
+        transaction_type:
+          type: string
+          nullable: true
+        freezed:
+          type: integer
+          default: 0
+        parent:
+          type: string
+          nullable: true
+        parentfield:
+          type: string
+          nullable: true
+        parenttype:
+          type: string
+          nullable: true
+    tabCustomer_Identification:
+      type: object
+      properties:
+        name:
+          type: string
+        creation:
+          type: string
+          format: date-time
+          nullable: true
+        modified:
+          type: string
+          format: date-time
+          nullable: true
+        modified_by:
+          type: string
+          nullable: true
+        owner:
+          type: string
+          nullable: true
+        docstatus:
+          type: integer
+          default: 0
+        idx:
+          type: integer
+          default: 0
+        kyc_type:
+          type: string
+          nullable: true
+        primary_identifier:
+          type: string
+          nullable: true
+        secondary_identifier:
+          type: string
+          nullable: true
+        enabled:
+          type: integer
+          default: 1
+        user_tags:
+          type: string
+          nullable: true
+        comments:
+          type: string
+          nullable: true
+        assign:
+          type: string
+          nullable: true
+        liked_by:
+          type: string
+          nullable: true
+    tabCustomer_Account_Balance:
+      type: object
+      properties:
+        name:
+          type: string
+        creation:
+          type: string
+          format: date-time
+          nullable: true
+        modified:
+          type: string
+          format: date-time
+          nullable: true
+        modified_by:
+          type: string
+          nullable: true
+        owner:
+          type: string
+          nullable: true
+        docstatus:
+          type: integer
+          default: 0
+        idx:
+          type: integer
+          default: 0
+        account_type:
+          type: string
+          nullable: true
+        account:
+          type: string
+          nullable: true
+        balance:
+          type: number
+          default: 0
+        user_tags:
+          type: string
+          nullable: true
+        comments:
+          type: string
+          nullable: true
+        assign:
+          type: string
+          nullable: true
+        liked_by:
+          type: string
+          nullable: true
+    tabCustomer_Transaction_Limits:
+      type: object
+      properties:
+        name:
+          type: string
+        creation:
+          type: string
+          format: date-time
+          nullable: true
+        modified:
+          type: string
+          format: date-time
+          nullable: true
+        modified_by:
+          type: string
+          nullable: true
+        owner:
+          type: string
+          nullable: true
+        docstatus:
+          type: integer
+          default: 0
+        idx:
+          type: integer
+          default: 0
+        customer:
+          type: string
+          nullable: true
+        rule_name:
+          type: string
+          nullable: true
+        beneficiary:
+          type: string
+          nullable: true
+        duration:
+          type: string
+          nullable: true
+        period_start:
+          type: string
+          format: date-time
+          nullable: true
+        current_limit_value:
+          type: number
+          default: 0
+        limit_value:
+          type: number
+          default: 0
+        remaining_limit_value:
+          type: number
+          default: 0
+        user_tags:
+          type: string
+          nullable: true
+        comments:
+          type: string
+          nullable: true
+        assign:
+          type: string
+          nullable: true
+        liked_by:
+          type: string
+          nullable: true
+    tabCustomer_Balance_Limits:
+      type: object
+      properties:
+        name:
+          type: string
+        creation:
+          type: string
+          format: date-time
+          nullable: true
+        modified:
+          type: string
+          format: date-time
+          nullable: true
+        modified_by:
+          type: string
+          nullable: true
+        owner:
+          type: string
+          nullable: true
+        docstatus:
+          type: integer
+          default: 0
+        idx:
+          type: integer
+          default: 0
+        customer:
+          type: string
+          nullable: true
+        rule_name:
+          type: string
+          nullable: true
+        current_balance:
+          type: number
+          default: 0
+        balance:
+          type: number
+          default: 0
+        remaining_balance:
+          type: number
+          default: 0
+        user_tags:
+          type: string
+          nullable: true
+        comments:
+          type: string
+          nullable: true
+        assign:
+          type: string
+          nullable: true
+        liked_by:
+          type: string
+          nullable: true
+    tabTransaction:
+      type: object
+      properties:
+        name:
+          type: string
+        creation:
+          type: string
+          format: date-time
+          nullable: true
+        modified:
+          type: string
+          format: date-time
+          nullable: true
+        modified_by:
+          type: string
+          nullable: true
+        owner:
+          type: string
+          nullable: true
+        docstatus:
+          type: integer
+          default: 0
+        idx:
+          type: integer
+          default: 0
+        account:
+          type: string
+          nullable: true
+        account_type:
+          type: string
+          nullable: true
+        customer:
+          type: string
+          nullable: true
+        tsp:
+          type: string
+          nullable: true
+        transaction_type:
+          type: string
+          nullable: true
+        dr_cr:
+          type: string
+          nullable: true
+        beneficiary:
+          type: string
+          nullable: true
+        amount:
+          type: number
+          default: 0
+        channel:
+          type: string
+          default: "0"
+          nullable: true
+        purpose:
+          type: string
+          nullable: true
+        original_transaction_number:
+          type: string
+          nullable: true
+        original_transaction_date:
+          type: string
+          nullable: true
+        transaction_currency:
+          type: string
+          nullable: true
+        exchange_rate:
+          type: number
+          default: 0
+        additional_transaction_number:
+          type: string
+          nullable: true
+        user_tags:
+          type: string
+          nullable: true
+        comments:
+          type: string
+          nullable: true
+        assign:
+          type: string
+          nullable: true
+        liked_by:
+          type: string
+          nullable: true
+    tabTransaction_Limits:
+      type: object
+      properties:
+        name:
+          type: string
+        creation:
+          type: string
+          format: date-time
+          nullable: true
+        modified:
+          type: string
+          format: date-time
+          nullable: true
+        modified_by:
+          type: string
+          nullable: true
+        owner:
+          type: string
+        docstatus:
+          type: integer
+          default: 0
+        idx:
+          type: integer
+          default: 0
+        limit_type:
+          type: string
+          nullable: true
+        enabled:
+          type: integer
+          default: 1
+        kyc_type:
+          type: string
+          nullable: true
+        duration:
+          type: string
+          nullable: true
+        dr_cr:
+          type: string
+          nullable: true
+        limit_value:
+          type: number
+          default: 0
+        per_beneficiary:
+          type: integer
+          default: 0
+        aggregate_field:
+          type: string
+          default: amount
+          nullable: true
+        aggregate_function:
+          type: string
+          nullable: true
+        rule_json:
+          type: string
+          nullable: true
+        amended_from:
+          type: string
+          nullable: true
+        user_tags:
+          type: string
+          nullable: true
+        comments:
+          type: string
+          nullable: true
+        assign:
+          type: string
+          nullable: true
+        liked_by:
+          type: string
+          nullable: true
+    tabAccount_Balance:
+      type: object
+      properties:
+        name:
+          type: string
+        creation:
+          type: string
+          format: date-time
+          nullable: true
+        modified:
+          type: string
+          format: date-time
+          nullable: true
+        modified_by:
+          type: string
+          nullable: true
+        owner:
+          type: string
+        docstatus:
+          type: integer
+          default: 0
+        idx:
+          type: integer
+          default: 0
+        limit_type:
+          type: string
+          nullable: true
+        enabled:
+          type: integer
+          default: 1
+        kyc_type:
+          type: string
+          nullable: true
+        balance:
+          type: number
+          default: 0
+        rule_json:
+          type: string
+          nullable: true
+        amended_from:
+          type: string
+          nullable: true
+        user_tags:
+          type: string
+          nullable: true
+        comments:
+          type: string
+          nullable: true
+        assign:
+          type: string
+          nullable: true
+        liked_by:
+          type: string
+          nullable: true
+    tabTSP_List:
+      type: object
+      properties:
+        name:
+          type: string
+        creation:
+          type: string
+          format: date-time
+          nullable: true
+        modified:
+          type: string
+          format: date-time
+          nullable: true
+        modified_by:
+          type: string
+          nullable: true
+        owner:
+          type: string
+          nullable: true
+        docstatus:
+          type: integer
+          default: 0
+        idx:
+          type: integer
+          default: 0
+        tsp:
+          type: string
+          nullable: true
+        parent:
+          type: string
+          nullable: true
+        parentfield:
+          type: string
+          nullable: true
+        parenttype:
+          type: string
+          nullable: true
+    tabKYC_Type:
+      type: object
+      properties:
+        name:
+          type: string
+        creation:
+          type: string
+          format: date-time
+          nullable: true
+        modified:
+          type: string
+          format: date-time
+          nullable: true
+        modified_by:
+          type: string
+          nullable: true
+        owner:
+          type: string
+          nullable: true
+        docstatus:
+          type: integer
+          default: 0
+        idx:
+          type: integer
+          default: 0
+        title:
+          type: string
+          nullable: true
+        json:
+          type: string
+          nullable: true
+        user_tags:
+          type: string
+          nullable: true
+        comments:
+          type: string
+          nullable: true
+        assign:
+          type: string
+          nullable: true
+        liked_by:
+          type: string
+          nullable: true
+    tabKYC_Validity:
+      type: object
+      properties:
+        name:
+          type: string
+        creation:
+          type: string
+          format: date-time
+          nullable: true
+        modified:
+          type: string
+          format: date-time
+          nullable: true
+        modified_by:
+          type: string
+          nullable: true
+        owner:
+          type: string
+          nullable: true
+        docstatus:
+          type: integer
+          default: 0
+        idx:
+          type: integer
+          default: 0
+        kyc_type:
+          type: string
+          nullable: true
+        risk_profile:
+          type: string
+          nullable: true
+        validity:
+          type: number
+          default: 0
+        user_tags:
+          type: string
+          nullable: true
+        comments:
+          type: string
+          nullable: true
+        assign:
+          type: string
+          nullable: true
+        liked_by:
+          type: string
+          nullable: true
+    tabKYC_Document_Type:
+      type: object
+      properties:
+        name:
+          type: string
+        creation:
+          type: string
+          format: date-time
+          nullable: true
+        modified:
+          type: string
+          format: date-time
+          nullable: true
+        modified_by:
+          type: string
+          nullable: true
+        owner:
+          type: string
+          nullable: true
+        docstatus:
+          type: integer
+          default: 0
+        idx:
+          type: integer
+          default: 0
+        title:
+          type: string
+          nullable: true
+        length:
+          type: integer
+          default: 0
+        user_tags:
+          type: string
+          nullable: true
+        comments:
+          type: string
+          nullable: true
+        assign:
+          type: string
+          nullable: true
+        liked_by:
+          type: string
+          nullable: true
+    tabKYC_Document:
+      type: object
+      properties:
+        name:
+          type: string
+        creation:
+          type: string
+          format: date-time
+          nullable: true
+        modified:
+          type: string
+          format: date-time
+          nullable: true
+        modified_by:
+          type: string
+          nullable: true
+        owner:
+          type: string
+          nullable: true
+        docstatus:
+          type: integer
+          default: 0
+        idx:
+          type: integer
+          default: 0
+        title:
+          type: string
+          nullable: true
+        number:
+          type: string
+          nullable: true
+        expiry_date:
+          type: string
+          format: date-time
+          nullable: true
+        parent:
+          type: string
+          nullable: true
+        parentfield:
+          type: string
+          nullable: true
+        parenttype:
+          type: string
+          nullable: true

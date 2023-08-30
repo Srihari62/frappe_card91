@@ -1,0 +1,9 @@
+summary: Fetch many tabKYC_Validity
+tasks:
+  - id: mysql_tabkyc_validity_search
+    fn: com.gs.datastore
+    args:
+      datasource: mysql
+      data: <% inputs.body %>
+      config:
+        method: tabKYC_Validity.findMany

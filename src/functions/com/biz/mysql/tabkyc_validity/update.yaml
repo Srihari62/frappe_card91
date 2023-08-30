@@ -1,0 +1,12 @@
+summary: Update tabKYC_Validity
+tasks:
+  - id: mysql_tabkyc_validity_update
+    fn: com.gs.datastore
+    args:
+      datasource: mysql
+      data:
+        where:
+          name: <% inputs.params.name %>
+        data: <% inputs.body %>
+      config:
+        method: tabKYC_Validity.update

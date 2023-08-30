@@ -1,0 +1,10 @@
+summary: Create tabKYC_Document_Type
+tasks:
+  - id: mysql_tabkyc_document_type_create
+    fn: com.gs.datastore
+    args:
+      datasource: mysql
+      data:
+        data: <% inputs.body %>
+      config:
+        method: tabKYC_Document_Type.create

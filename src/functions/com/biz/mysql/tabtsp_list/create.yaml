@@ -1,0 +1,10 @@
+summary: Create tabTSP_List
+tasks:
+  - id: mysql_tabtsp_list_create
+    fn: com.gs.datastore
+    args:
+      datasource: mysql
+      data:
+        data: <% inputs.body %>
+      config:
+        method: tabTSP_List.create

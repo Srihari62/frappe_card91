@@ -1,0 +1,13 @@
+summary: Fetch many tabCustomer
+tasks:
+  - id: mysql_tabcustomer_search
+    fn: com.gs.datastore
+    args:
+      datasource: mysql
+      data: 
+        where: <% inputs.body %>
+        select: 
+          full_name: true 
+          id: true
+      config:
+        method: tabCustomer.findMany

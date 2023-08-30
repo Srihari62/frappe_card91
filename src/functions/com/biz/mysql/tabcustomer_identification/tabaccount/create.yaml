@@ -1,0 +1,10 @@
+summary: Create tabAccount
+tasks:
+  - id: mysql_tabaccount_create
+    fn: com.gs.datastore
+    args:
+      datasource: mysql
+      data:
+        data: <% inputs.body %>
+      config:
+        method: tabAccount.create

@@ -1,0 +1,88 @@
+# ONE
+/mysql/tabcustomer/:id.http.get:
+  summary: Fetch tabCustomer
+  description: Fetch tabCustomer from database
+  fn: com.biz.mysql.tabcustomer.one
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# CREATE
+/mysql/tabcustomer.http.post:
+  summary: Create a new tabCustomer
+  description: Create tabCustomer from database
+  fn: com.biz.mysql.tabcustomer.create
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/mysql/tabCustomer'
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# UPDATE
+/mysql/tabcustomer/:id.http.put:
+  summary: Update a tabCustomer
+  description: Update tabCustomer from database
+  fn: com.biz.mysql.tabcustomer.update
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/mysql/tabCustomer'
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# DELETE
+/mysql/tabcustomer/:id.http.delete:
+  summary: Delete a tabCustomer
+  description: Delete tabCustomer from database
+  fn: com.biz.mysql.tabcustomer.delete
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# SEARCH
+/mysql/tabcustomer/search.http.post:
+  summary: Fetch multiple tabCustomer
+  description: Fetch multiple tabCustomer from database
+  fn: com.biz.mysql.tabcustomer.search
+  body:
+    content:
+      application/json:
+        schema:
+          type: object
+  responses:
+    content:
+      application/json:
+        schema:
+          type: array
+

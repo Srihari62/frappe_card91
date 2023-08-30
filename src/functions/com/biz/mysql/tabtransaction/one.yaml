@@ -1,0 +1,11 @@
+summary: Fetch tabTransaction
+tasks:
+  - id: mysql_tabtransaction_one
+    fn: com.gs.datastore
+    args:
+      datasource: mysql
+      data:
+        where:
+          name: <% inputs.params.name %>
+      config:
+        method: tabTransaction.findUnique

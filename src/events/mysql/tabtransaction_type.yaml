@@ -1,0 +1,88 @@
+# ONE
+/mysql/tabtransaction_type/:name.http.get:
+  summary: Fetch tabTransaction_Type
+  description: Fetch tabTransaction_Type from database
+  fn: com.biz.mysql.tabtransaction_type.one
+  params:
+    - name: name
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# CREATE
+/mysql/tabtransaction_type.http.post:
+  summary: Create a new tabTransaction_Type
+  description: Create tabTransaction_Type from database
+  fn: com.biz.mysql.tabtransaction_type.create
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/mysql/tabTransaction_Type'
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# UPDATE
+/mysql/tabtransaction_type/:name.http.put:
+  summary: Update a tabTransaction_Type
+  description: Update tabTransaction_Type from database
+  fn: com.biz.mysql.tabtransaction_type.update
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/mysql/tabTransaction_Type'
+  params:
+    - name: name
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# DELETE
+/mysql/tabtransaction_type/:name.http.delete:
+  summary: Delete a tabTransaction_Type
+  description: Delete tabTransaction_Type from database
+  fn: com.biz.mysql.tabtransaction_type.delete
+  params:
+    - name: name
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# SEARCH
+/mysql/tabtransaction_type/search.http.post:
+  summary: Fetch multiple tabTransaction_Type
+  description: Fetch multiple tabTransaction_Type from database
+  fn: com.biz.mysql.tabtransaction_type.search
+  body:
+    content:
+      application/json:
+        schema:
+          type: object
+  responses:
+    content:
+      application/json:
+        schema:
+          type: array
+

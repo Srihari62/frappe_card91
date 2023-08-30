@@ -1,0 +1,12 @@
+summary: Update tabCustomer_Balance_Limits
+tasks:
+  - id: mysql_tabcustomer_balance_limits_update
+    fn: com.gs.datastore
+    args:
+      datasource: mysql
+      data:
+        where:
+          name: <% inputs.params.name %>
+        data: <% inputs.body %>
+      config:
+        method: tabCustomer_Balance_Limits.update

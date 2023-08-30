@@ -1,0 +1,88 @@
+# ONE
+/mysql/tabtransaction_limits/:name.http.get:
+  summary: Fetch tabTransaction_Limits
+  description: Fetch tabTransaction_Limits from database
+  fn: com.biz.mysql.tabtransaction_limits.one
+  params:
+    - name: name
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# CREATE
+/mysql/tabtransaction_limits.http.post:
+  summary: Create a new tabTransaction_Limits
+  description: Create tabTransaction_Limits from database
+  fn: com.biz.mysql.tabtransaction_limits.create
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/mysql/tabTransaction_Limits'
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# UPDATE
+/mysql/tabtransaction_limits/:name.http.put:
+  summary: Update a tabTransaction_Limits
+  description: Update tabTransaction_Limits from database
+  fn: com.biz.mysql.tabtransaction_limits.update
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/mysql/tabTransaction_Limits'
+  params:
+    - name: name
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# DELETE
+/mysql/tabtransaction_limits/:name.http.delete:
+  summary: Delete a tabTransaction_Limits
+  description: Delete tabTransaction_Limits from database
+  fn: com.biz.mysql.tabtransaction_limits.delete
+  params:
+    - name: name
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# SEARCH
+/mysql/tabtransaction_limits/search.http.post:
+  summary: Fetch multiple tabTransaction_Limits
+  description: Fetch multiple tabTransaction_Limits from database
+  fn: com.biz.mysql.tabtransaction_limits.search
+  body:
+    content:
+      application/json:
+        schema:
+          type: object
+  responses:
+    content:
+      application/json:
+        schema:
+          type: array
+

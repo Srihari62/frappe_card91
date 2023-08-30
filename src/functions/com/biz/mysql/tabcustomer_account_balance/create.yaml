@@ -1,0 +1,10 @@
+summary: Create tabCustomer_Account_Balance
+tasks:
+  - id: mysql_tabcustomer_account_balance_create
+    fn: com.gs.datastore
+    args:
+      datasource: mysql
+      data:
+        data: <% inputs.body %>
+      config:
+        method: tabCustomer_Account_Balance.create

@@ -1,0 +1,17 @@
+summary: Fetch tabCustomer
+tasks:
+  - id: mysql_tabcustomer_one
+    fn: com.gs.datastore
+    args:
+      datasource: mysql
+      data:
+        where:
+          id: <% parseInt(inputs.params.id) %>
+        select: 
+          status: true
+      config:
+        method: tabCustomer.findUnique
+
+  # - id: return_customer_status 
+  #   fn: com.gs.transform 
+  #   args: <% outputs.mysql_tabcustomer_one.data.status %>

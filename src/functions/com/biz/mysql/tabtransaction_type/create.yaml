@@ -1,0 +1,10 @@
+summary: Create tabTransaction_Type
+tasks:
+  - id: mysql_tabtransaction_type_create
+    fn: com.gs.datastore
+    args:
+      datasource: mysql
+      data:
+        data: <% inputs.body %>
+      config:
+        method: tabTransaction_Type.create

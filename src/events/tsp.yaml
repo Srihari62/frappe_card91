@@ -1,0 +1,14 @@
+/mysql/tabtsp/search.http.post:
+  summary: Fetch multiple tabUser
+  description: Fetch multiple tabUser from database
+  fn: com.biz.mysql.tabtsp.search
+  body:
+    content:
+      application/json:
+        schema:
+          type: object
+  responses:
+    content:
+      application/json:
+        schema:
+          type: array

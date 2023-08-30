@@ -1,0 +1,69 @@
+version: "3.7"
+
+services:
+  node:
+    command: bash -c "sleep infinity"
+    build:
+      context: .
+      args:
+        USER_UID: 1000
+    environment:
+      - SHELL=/bin/bash
+      - MONGO_TEST_URL=mongodb://admin:mindgrep@mongodb1,mongodb2,mongodb3:27017/
+              
+    
+      - MYSQL_URL=mysql://root:root@mysql:3306/test
+              
+      - PORT=3000
+    volumes:
+      - ..:/workspace/development/app:cached
+      - ./scripts:/scripts
+    working_dir: /workspace/development/app
+    ports:
+      - 3000:3000
+
+    depends_on:
+
+
+
+
+
+
+      - mysql
+
+
+
+
+
+
+
+  mysql:
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password --lower_case_table_names=1
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=test
+    volumes:
+      - mysql-data:/var/lib/mysql
+    ports:
+    - 3308:3306
+
+
+
+
+
+
+
+
+volumes:
+
+
+
+
+
+  mysql-data:
+
+
+
+

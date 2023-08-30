@@ -1,0 +1,10 @@
+summary: Create tabCustomer_Balance_Limits
+tasks:
+  - id: mysql_tabcustomer_balance_limits_create
+    fn: com.gs.datastore
+    args:
+      datasource: mysql
+      data:
+        data: <% inputs.body %>
+      config:
+        method: tabCustomer_Balance_Limits.create

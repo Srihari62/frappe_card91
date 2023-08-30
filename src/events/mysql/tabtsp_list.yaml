@@ -1,0 +1,88 @@
+# ONE
+/mysql/tabtsp_list/:name.http.get:
+  summary: Fetch tabTSP_List
+  description: Fetch tabTSP_List from database
+  fn: com.biz.mysql.tabtsp_list.one
+  params:
+    - name: name
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# CREATE
+/mysql/tabtsp_list.http.post:
+  summary: Create a new tabTSP_List
+  description: Create tabTSP_List from database
+  fn: com.biz.mysql.tabtsp_list.create
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/mysql/tabTSP_List'
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# UPDATE
+/mysql/tabtsp_list/:name.http.put:
+  summary: Update a tabTSP_List
+  description: Update tabTSP_List from database
+  fn: com.biz.mysql.tabtsp_list.update
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/mysql/tabTSP_List'
+  params:
+    - name: name
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# DELETE
+/mysql/tabtsp_list/:name.http.delete:
+  summary: Delete a tabTSP_List
+  description: Delete tabTSP_List from database
+  fn: com.biz.mysql.tabtsp_list.delete
+  params:
+    - name: name
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# SEARCH
+/mysql/tabtsp_list/search.http.post:
+  summary: Fetch multiple tabTSP_List
+  description: Fetch multiple tabTSP_List from database
+  fn: com.biz.mysql.tabtsp_list.search
+  body:
+    content:
+      application/json:
+        schema:
+          type: object
+  responses:
+    content:
+      application/json:
+        schema:
+          type: array
+

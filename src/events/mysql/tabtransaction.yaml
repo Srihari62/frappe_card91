@@ -1,0 +1,88 @@
+# ONE
+/mysql/tabtransaction/:name.http.get:
+  summary: Fetch tabTransaction
+  description: Fetch tabTransaction from database
+  fn: com.biz.mysql.tabtransaction.one
+  params:
+    - name: name
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# CREATE
+/mysql/tabtransaction.http.post:
+  summary: Create a new tabTransaction
+  description: Create tabTransaction from database
+  fn: com.biz.mysql.tabtransaction.create
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/mysql/tabTransaction'
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# UPDATE
+/mysql/tabtransaction/:name.http.put:
+  summary: Update a tabTransaction
+  description: Update tabTransaction from database
+  fn: com.biz.mysql.tabtransaction.update
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/mysql/tabTransaction'
+  params:
+    - name: name
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# DELETE
+/mysql/tabtransaction/:name.http.delete:
+  summary: Delete a tabTransaction
+  description: Delete tabTransaction from database
+  fn: com.biz.mysql.tabtransaction.delete
+  params:
+    - name: name
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# SEARCH
+/mysql/tabtransaction/search.http.post:
+  summary: Fetch multiple tabTransaction
+  description: Fetch multiple tabTransaction from database
+  fn: com.biz.mysql.tabtransaction.search
+  body:
+    content:
+      application/json:
+        schema:
+          type: object
+  responses:
+    content:
+      application/json:
+        schema:
+          type: array
+

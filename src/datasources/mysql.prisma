@@ -1,0 +1,453 @@
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated-clients/mysql"
+  previewFeatures = ["metrics"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("MYSQL_URL")
+}
+
+// model tabCustomer {
+//   name                     String?    @db.VarChar(140)
+//   creation                 DateTime? @db.DateTime(6)
+//   modified                 DateTime? @db.DateTime(6)
+//   modified_by              String?   @db.VarChar(140)
+//   owner                    String?   @db.VarChar(140)
+//   docstatus                Int       @default(0)
+//   id                       Int       @id @default(autoincrement())
+//   full_name                String?   @db.VarChar(140)
+//   first_name               String?   @db.VarChar(140)
+//   last_name                String?   @db.VarChar(140)
+//   kyc_type                 String?   @db.VarChar(140)
+//   kyc_mode                 String?   @db.VarChar(140)
+//   kyc_validity             DateTime? @db.Date
+//   date_of_birth            DateTime? @db.Date
+//   contact_details          String?   @db.VarChar(140)
+//   risk_profile             String?   @db.VarChar(140)
+//   transaction_risk_profile String?   @db.VarChar(140)
+//   status                   String?   @db.VarChar(140)
+//   user_tags                String?   @map("_user_tags") @db.Text
+//   comments                 String?   @map("_comments") @db.Text
+//   assign                   String?   @map("_assign") @db.Text
+//   liked_by                 String?   @map("_liked_by") @db.Text
+//   accounts tabAccount[]
+//   @@index([modified], map: "modified")
+// }
+
+// model tabAccount {
+//   name                            String?   @db.VarChar(140)
+//   creation                        DateTime? @db.DateTime(6)
+//   modified                        DateTime? @db.DateTime(6)
+//   modified_by                     String?   @db.VarChar(140)
+//   owner                           String   @db.VarChar(140)
+//   docstatus                       Int       @default(0)
+//   id                              Int       @id @default(autoincrement())
+//   // customer                        String? @db.VarChar(140)
+//   business                        String?   @db.VarChar(140)
+//   tsp                             String?   @db.VarChar(140)
+//   account_number                  String?   @db.VarChar(140)
+//   account_holder_name             String?   @db.VarChar(140)
+//   account_type                    String?   @db.VarChar(140)
+//   expiry_date                     DateTime? @db.Date
+//   is_foreign_transactions_allowed Int       @default(0)
+//   enabled                         Int       @default(1)
+//   user_tags                       String?   @map("_user_tags") @db.Text
+//   comments                        String?   @map("_comments") @db.Text
+//   assign                          String?   @map("_assign") @db.Text
+//   liked_by                        String?   @map("_liked_by") @db.Text
+//   customer tabCustomer @relation(fields: [id], references: [id])
+//   @@index([id], map: "id")
+//   @@index([modified], map: "modified")
+
+// }
+  // kyc_documents tabKYC_Document[]
+  // account_balance tabAccount_Balance[]
+  // transaction_limits tabTransaction_Limits[]
+  // transaction_freeze tabCustomer_Transaction_Freeze[]
+
+
+// Prisma schema definition
+
+model tabCustomer {
+  id                       Int       @id @default(autoincrement())
+  name                     String?   @db.VarChar(140)
+  creation                 DateTime? @db.DateTime(6)
+  modified                 DateTime? @db.DateTime(6)
+  modified_by              String?   @db.VarChar(140)
+  owner                    String?   @db.VarChar(140)
+  docstatus                Int       @default(0)
+  full_name                String?   @db.VarChar(140)
+  first_name               String?   @db.VarChar(140)
+  last_name                String?   @db.VarChar(140)
+  kyc_type                 String?   @db.VarChar(140)
+  kyc_mode                 String?   @db.VarChar(140)
+  kyc_validity             DateTime? @db.Date
+  date_of_birth            DateTime? @db.Date
+  contact_details          String?   @db.VarChar(140)
+  risk_profile             String?   @db.VarChar(140)
+  transaction_risk_profile String?   @db.VarChar(140)
+  status                   String?   @db.VarChar(140)
+  user_tags                String?   @map("_user_tags") @db.Text
+  comments                 String?   @map("_comments") @db.Text
+  assign                   String?   @map("_assign") @db.Text
+  liked_by                 String?   @map("_liked_by") @db.Text
+
+  accounts                 tabAccount[]
+
+  // Index
+  @@index([modified], map: "modified")
+}
+
+model tabAccount {
+  id                              Int       @id @default(autoincrement())
+  name                            String?   @db.VarChar(140)
+  creation                        DateTime? @db.DateTime(6)
+  modified                        DateTime? @db.DateTime(6)
+  modified_by                     String?   @db.VarChar(140)
+  owner                           String?   @db.VarChar(140)
+  docstatus                       Int       @default(0)
+  business                        String?   @db.VarChar(140)
+  tsp                             String?   @db.VarChar(140)
+  account_number                  String?   @db.VarChar(140)
+  account_holder_name             String?   @db.VarChar(140)
+  account_type                    String?   @db.VarChar(140)
+  expiry_date                     DateTime? @db.Date
+  is_foreign_transactions_allowed Int       @default(0)
+  enabled                         Int       @default(1)
+  user_tags                       String?   @map("_user_tags") @db.Text
+  comments                        String?   @map("_comments") @db.Text
+  assign                          String?   @map("_assign") @db.Text
+  liked_by                        String?   @map("_liked_by") @db.Text
+
+  customer                         tabCustomer @relation(fields: [customerId], references: [id])
+  customerId                       Int
+
+  // Index
+  @@index([modified], map: "modified")
+}
+
+
+model tabTransaction_Type {
+  name             String    @id @db.VarChar(140)
+  creation         DateTime? @db.DateTime(6)
+  modified         DateTime? @db.DateTime(6)
+  modified_by      String?   @db.VarChar(140)
+  owner            String?   @db.VarChar(140)
+  docstatus        Int       @default(0)
+  idx              Int       @default(0)
+  title            String?   @unique(map: "title") @db.VarChar(140)
+  apply_rules      Int       @default(1)
+  mandatory_fields String?   @db.Text
+  json             String?   @db.LongText
+  user_tags        String?   @map("_user_tags") @db.Text
+  comments         String?   @map("_comments") @db.Text
+  assign           String?   @map("_assign") @db.Text
+  liked_by         String?   @map("_liked_by") @db.Text
+
+  @@index([modified], map: "modified")
+  @@map("tabTransaction Type")
+}
+
+model tabCustomer_Transaction_Freeze {
+  name             String    @id @db.VarChar(140)
+  creation         DateTime? @db.DateTime(6)
+  modified         DateTime? @db.DateTime(6)
+  modified_by      String?   @db.VarChar(140)
+  owner            String?   @db.VarChar(140)
+  docstatus        Int       @default(0)
+  idx              Int       @default(0)
+  transaction_type String?   @db.VarChar(140)
+  freezed          Int       @default(0)
+  parent           String?   @db.VarChar(140)
+  parentfield      String?   @db.VarChar(140)
+  parenttype       String?   @db.VarChar(140)
+  // customer tabCustomer? @relation(fields: [parent], references: [name])
+
+  @@index([modified], map: "modified")
+  // @@index([parent], map: "parent")
+  @@map("tabCustomer Transaction Freeze")
+}
+
+model tabCustomer_Identification {
+  name                 String    @id @db.VarChar(140)
+  creation             DateTime? @db.DateTime(6)
+  modified             DateTime? @db.DateTime(6)
+  modified_by          String?   @db.VarChar(140)
+  owner                String?   @db.VarChar(140)
+  docstatus            Int       @default(0)
+  idx                  Int       @default(0)
+  kyc_type             String?   @db.VarChar(140)
+  primary_identifier   String?   @db.VarChar(140)
+  secondary_identifier String?   @db.VarChar(140)
+  enabled              Int       @default(1)
+  user_tags            String?   @map("_user_tags") @db.Text
+  comments             String?   @map("_comments") @db.Text
+  assign               String?   @map("_assign") @db.Text
+  liked_by             String?   @map("_liked_by") @db.Text
+
+  @@index([modified], map: "modified")
+  @@map("tabCustomer Identification")
+}
+
+model tabCustomer_Account_Balance {
+  name         String    @id @db.VarChar(140)
+  creation     DateTime? @db.DateTime(6)
+  modified     DateTime? @db.DateTime(6)
+  modified_by  String?   @db.VarChar(140)
+  owner        String?   @db.VarChar(140)
+  docstatus    Int       @default(0)
+  idx          Int       @default(0)
+  // customer     String?   @db.VarChar(140)
+  account_type String?   @db.VarChar(140)
+  account      String?   @db.VarChar(140)
+  balance      Decimal   @default(0.000000000) @db.Decimal(21, 9)
+  user_tags    String?   @map("_user_tags") @db.Text
+  comments     String?   @map("_comments") @db.Text
+  assign       String?   @map("_assign") @db.Text
+  liked_by     String?   @map("_liked_by") @db.Text
+
+
+  @@index([modified], map: "modified")
+  @@map("tabCustomer Account Balance")
+}
+
+model tabCustomer_Transaction_Limits {
+  name                  String    @id @db.VarChar(140)
+  creation              DateTime? @db.DateTime(6)
+  modified              DateTime? @db.DateTime(6)
+  modified_by           String?   @db.VarChar(140)
+  owner                 String?   @db.VarChar(140)
+  docstatus             Int       @default(0)
+  idx                   Int       @default(0)
+  customer              String?   @db.VarChar(140)
+  rule_name             String?   @db.VarChar(140)
+  beneficiary           String?   @db.VarChar(140)
+  duration              String?   @db.VarChar(140)
+  period_start          DateTime? @db.Date
+  current_limit_value   Decimal   @default(0.000000000) @db.Decimal(21, 9)
+  limit_value           Decimal   @default(0.000000000) @db.Decimal(21, 9)
+  remaining_limit_value Decimal   @default(0.000000000) @db.Decimal(21, 9)
+  user_tags             String?   @map("_user_tags") @db.Text
+  comments              String?   @map("_comments") @db.Text
+  assign                String?   @map("_assign") @db.Text
+  liked_by              String?   @map("_liked_by") @db.Text
+
+  @@index([modified], map: "modified")
+  @@map("tabCustomer Transaction Limits")
+}
+
+model tabCustomer_Balance_Limits {
+  name              String    @id @db.VarChar(140)
+  creation          DateTime? @db.DateTime(6)
+  modified          DateTime? @db.DateTime(6)
+  modified_by       String?   @db.VarChar(140)
+  owner             String?   @db.VarChar(140)
+  docstatus         Int       @default(0)
+  idx               Int       @default(0)
+  customer          String?   @db.VarChar(140)
+  rule_name         String?   @db.VarChar(140)
+  current_balance   Decimal   @default(0.000000000) @db.Decimal(21, 9)
+  balance           Decimal   @default(0.000000000) @db.Decimal(21, 9)
+  remaining_balance Decimal   @default(0.000000000) @db.Decimal(21, 9)
+  user_tags         String?   @map("_user_tags") @db.Text
+  comments          String?   @map("_comments") @db.Text
+  assign            String?   @map("_assign") @db.Text
+  liked_by          String?   @map("_liked_by") @db.Text
+
+  @@index([modified], map: "modified")
+  @@map("tabCustomer Balance Limits")
+}
+
+
+
+
+
+model tabTransaction {
+  name                          String    @id @db.VarChar(140)
+  creation                      DateTime? @db.DateTime(6)
+  modified                      DateTime? @db.DateTime(6)
+  modified_by                   String?   @db.VarChar(140)
+  owner                         String?   @db.VarChar(140)
+  docstatus                     Int       @default(0)
+  idx                           Int       @default(0)
+  account                       String?   @db.VarChar(140)
+  account_type                  String?   @db.VarChar(140)
+  customer                      String?   @db.VarChar(140)
+  tsp                           String?   @db.VarChar(140)
+  transaction_type              String?   @db.VarChar(140)
+  dr_cr                         String?   @db.VarChar(140)
+  beneficiary                   String?   @db.VarChar(140)
+  amount                        Decimal   @default(0.000000000) @db.Decimal(21, 9)
+  channel                       String?   @default("0") @db.VarChar(140)
+  purpose                       String?   @db.VarChar(140)
+  original_transaction_number   String?   @db.VarChar(140)
+  original_transaction_date     String?   @db.VarChar(140)
+  transaction_currency          String?   @db.VarChar(140)
+  exchange_rate                 Decimal   @default(0.000000000) @db.Decimal(21, 9)
+  additional_transaction_number String?   @db.VarChar(140)
+  user_tags                     String?   @map("_user_tags") @db.Text
+  comments                      String?   @map("_comments") @db.Text
+  assign                        String?   @map("_assign") @db.Text
+  liked_by                      String?   @map("_liked_by") @db.Text
+
+  @@index([modified], map: "modified")
+}
+model tabTransaction_Limits {
+  name               String   @id @db.VarChar(140)
+  creation           DateTime? @db.DateTime(6)
+  modified           DateTime? @db.DateTime(6)
+  modified_by        String?   @db.VarChar(140)
+  owner              String   @db.VarChar(140)
+  docstatus          Int       @default(0)
+  idx                Int       @default(0)
+  limit_type         String?   @unique(map: "limit_type") @db.VarChar(140)
+  enabled            Int       @default(1)
+  kyc_type           String?   @db.VarChar(140)
+  duration           String?   @db.VarChar(140)
+  dr_cr              String?   @db.VarChar(140)
+  limit_value        Decimal   @default(0.000000000) @db.Decimal(21, 9)
+  per_beneficiary    Int       @default(0)
+  aggregate_field    String?   @default("amount") @db.VarChar(140)
+  aggregate_function String?   @db.VarChar(140)
+  rule_json          String?   @db.LongText
+  amended_from       String?   @db.VarChar(140)
+  user_tags          String?   @map("_user_tags") @db.Text
+  comments           String?   @map("_comments") @db.Text
+  assign             String?   @map("_assign") @db.Text
+  liked_by           String?   @map("_liked_by") @db.Text
+  // customer tabCustomer @relation(fields: [owner], references: [name])
+
+
+  @@index([modified], map: "modified")
+  // @@index([owner], map: "owner")
+  @@map("tabTransaction Limits")
+}
+
+
+
+
+model tabAccount_Balance {
+  name         String    @id @db.VarChar(140)
+  creation     DateTime? @db.DateTime(6)
+  modified     DateTime? @db.DateTime(6)
+  modified_by  String?   @db.VarChar(140)
+  owner        String   @db.VarChar(140)
+  docstatus    Int       @default(0)
+  idx          Int       @default(0)
+  limit_type   String?   @unique(map: "limit_type") @db.VarChar(140)
+  enabled      Int       @default(1)
+  kyc_type     String?   @db.VarChar(140)
+  balance      Decimal   @default(0.000000000) @db.Decimal(21, 9)
+  rule_json    String?   @db.LongText
+  amended_from String?   @db.VarChar(140)
+  user_tags    String?   @map("_user_tags") @db.Text
+  comments     String?   @map("_comments") @db.Text
+  assign       String?   @map("_assign") @db.Text
+  liked_by     String?   @map("_liked_by") @db.Text
+  // customer tabCustomer @relation(fields: [owner], references: [name])
+
+  @@index([modified], map: "modified")
+  // @@index([owner], map: "owner")
+  @@map("tabAccount Balance")
+}
+
+model tabTSP_List {
+  name        String    @id @db.VarChar(140)
+  creation    DateTime? @db.DateTime(6)
+  modified    DateTime? @db.DateTime(6)
+  modified_by String?   @db.VarChar(140)
+  owner       String?   @db.VarChar(140)
+  docstatus   Int       @default(0)
+  idx         Int       @default(0)
+  tsp         String?   @db.VarChar(140)
+  parent      String?   @db.VarChar(140)
+  parentfield String?   @db.VarChar(140)
+  parenttype  String?   @db.VarChar(140)
+
+  @@index([modified], map: "modified")
+  @@index([parent], map: "parent")
+  @@map("tabTSP List")
+}
+
+
+model tabKYC_Type {
+  name        String    @id @db.VarChar(140)
+  creation    DateTime? @db.DateTime(6)
+  modified    DateTime? @db.DateTime(6)
+  modified_by String?   @db.VarChar(140)
+  owner       String?   @db.VarChar(140)
+  docstatus   Int       @default(0)
+  idx         Int       @default(0)
+  title       String?   @unique(map: "title") @db.VarChar(140)
+  json        String?   @db.LongText
+  user_tags   String?   @map("_user_tags") @db.Text
+  comments    String?   @map("_comments") @db.Text
+  assign      String?   @map("_assign") @db.Text
+  liked_by    String?   @map("_liked_by") @db.Text
+
+  @@index([modified], map: "modified")
+  @@map("tabKYC Type")
+}
+
+model tabKYC_Validity {
+  name         String    @id @db.VarChar(140)
+  creation     DateTime? @db.DateTime(6)
+  modified     DateTime? @db.DateTime(6)
+  modified_by  String?   @db.VarChar(140)
+  owner        String?   @db.VarChar(140)
+  docstatus    Int       @default(0)
+  idx          Int       @default(0)
+  kyc_type     String?   @db.VarChar(140)
+  risk_profile String?   @db.VarChar(140)
+  validity     Decimal   @default(0.000000000) @db.Decimal(21, 9)
+  user_tags    String?   @map("_user_tags") @db.Text
+  comments     String?   @map("_comments") @db.Text
+  assign       String?   @map("_assign") @db.Text
+  liked_by     String?   @map("_liked_by") @db.Text
+
+  @@index([modified], map: "modified")
+  @@map("tabKYC Validity")
+}
+
+model tabKYC_Document_Type {
+  name        String    @id @db.VarChar(140)
+  creation    DateTime? @db.DateTime(6)
+  modified    DateTime? @db.DateTime(6)
+  modified_by String?   @db.VarChar(140)
+  owner       String?   @db.VarChar(140)
+  docstatus   Int       @default(0)
+  idx         Int       @default(0)
+  title       String?   @unique(map: "title") @db.VarChar(140)
+  length      Int       @default(0)
+  user_tags   String?   @map("_user_tags") @db.Text
+  comments    String?   @map("_comments") @db.Text
+  assign      String?   @map("_assign") @db.Text
+  liked_by    String?   @map("_liked_by") @db.Text
+
+  @@index([modified], map: "modified")
+  @@map("tabKYC Document Type")
+}
+
+model tabKYC_Document {
+  name        String    @id @db.VarChar(140)
+  creation    DateTime? @db.DateTime(6)
+  modified    DateTime? @db.DateTime(6)
+  modified_by String?   @db.VarChar(140)
+  owner       String?   @db.VarChar(140)
+  docstatus   Int       @default(0)
+  idx         Int       @default(0)
+  title       String?   @db.VarChar(140)
+  number      String?   @db.VarChar(140)
+  expiry_date DateTime? @db.Date
+  parent      String?   @db.VarChar(140)
+  parentfield String?   @db.VarChar(140)
+  parenttype  String?   @db.VarChar(140)
+  // customer tabCustomer? @relation(fields: [parent], references: [name])
+  @@index([modified], map: "modified")
+  // @@index([parent], map: "parent")
+  @@map("tabKYC Document")
+}
+

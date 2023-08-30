@@ -1,0 +1,11 @@
+summary: Delete tabKYC_Document_Type
+tasks:
+  - id: mysql_tabkyc_document_type_delete
+    fn: com.gs.datastore
+    args:
+      datasource: mysql
+      data:
+        where:
+          name: <% inputs.params.name %>
+      config:
+        method: tabKYC_Document_Type.delete
