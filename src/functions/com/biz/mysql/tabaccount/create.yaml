@@ -12,304 +12,68 @@ tasks:
       config:
         method: tabCustomer.findUnique
 
-  - id: if_active
-    fn: com.gs.if
-    condition: <% outputs.mysql_tabcustomer_one.data.status == "Active" %>
-    tasks:
-    - id: mysql_tabaccount_search
-      fn: com.gs.datastore
-      args:
-        datasource: mysql
-        data:
-          where:
-            account_type: <% inputs.body.account_type %>
-            account_number: <% inputs.body.account_number %>
-        config:
-          method: tabAccount.findMany
-
-    - id: return_acc_info 
-      fn: com.gs.transform 
-      args: <% outputs.mysql_tabaccount_search.data.length%>
-
-    - id: if_acc_not_exists
-      fn: com.gs.if
-      condition: <% outputs.mysql_tabaccount_search.data.length == 0  %>
-      tasks:
-      - id: mysql_tabaccount_create
-        fn: com.gs.datastore
-        args: 
-          datasource: mysql
-          data:
-            data: <% inputs.body %>
-          config:
-            method: tabAccount.create
-
-    - id: elif_acc_exists
-      description: Return account already exist
-      fn: com.gs.elif
-      condition: <% outputs.mysql_tabaccount_search.data.length > 0  %>
-      tasks:
-        - id: acc_exists_err
-          description: Return account exists
-          fn: com.gs.transform
-          args: <% "Account Number " + inputs.body.account_number + " with the same Account Type " +inputs.body.account_type+ " already exists" %>
-   
-
-  - id: else_inactive
-    description: Return hello world
-    fn: com.gs.else
-    tasks:
-      - id: step2
-        description: Return hello world
+  - id: is_customer_exist   # Checking whether customer with specified id is existed or not
+    fn: com.gs.switch 
+    value: <% outputs.mysql_tabcustomer_one.data == null %> 
+    cases:
+      true:
+      - id: customer_dosnt_exist
         fn: com.gs.return
-        args: 'Customer is Inactive'
-      
-  
+        args: 
+          code : 404 
+          success: false 
+          message: <% "Customer with id "+inputs.body.customerId + " Not found" %>
+      false:
+      - id: if_customer_active       # If customer exists, checking whether he is Active or not
+        fn: com.gs.switch
+        value: <% outputs.mysql_tabcustomer_one.data.status == "Active" %>
+        cases:
+          true:      # If customer is active check whether account number and account type is already exists
+          - id: mysql_tabaccount_search
+            fn: com.gs.datastore
+            args:
+              datasource: mysql
+              data:
+                where:
+                  account_type: <% inputs.body.account_type %>
+                  account_number: <% inputs.body.account_number %>
+              config:
+                method: tabAccount.findMany
+
+          - id: is_account_exist # If account number and account type not already exists create a new account
+            fn: com.gs.switch
+            value: <% outputs.mysql_tabaccount_search.data.length == 0 %>
+            cases:
+              true:
+              - id: mysql_tabaccount_create
+                fn: com.gs.datastore
+                args: 
+                  datasource: mysql
+                  data:
+                    data: <% inputs.body %>
+                  config:
+                    method: tabAccount.create
+
+              false:       # If account number and account type already exists return that already exists
+              - id: acc_exists_err
+                description: Return account exists
+                fn: com.gs.return
+                args:
+                  code: 409
+                  success: false
+                  message: <% "Account Number " + inputs.body.account_number + " with the same Account Type " +inputs.body.account_type+ " already exists" %>
+
+          false:   # If Customer is inactive return Inactive
+          - id: step2
+            description: Return hello world
+            fn: com.gs.return
+            args: 
+              code: 403 
+              success: false
+              message: <% "Customer with id " + inputs.body.customerId + " is Inactive" %>    
+              
+    # defaults:
+    #   id: default
+    #   fn: com.gs.return
+    #   args: <%inputs.body.default_return_val%> #coffee/js script for dyanmic evaluation. Wrapped in <% %>. Same as that used elsewhere in workflows for dynamic calculations and variable substitutions. For ex. as used in com.gs.transform and com.gs.return
 
-
-
-    # - id: return_req_details 
-    #   fn: com.gs.transform
-    #   args:
-    #     data: |
-    #       <js%
-    #         const filteredAccounts = [];
-    #         let searchData = {
-    #         "account_number": inputs.body.account_number,
-    #         "account_type": inputs.body.account_type
-    #           }
-
-    #         for (const account of outputs.mysql_tabaccount_search.data) {
-    #           const filteredAccount = {
-    #             "account_number": account.account_number,
-    #             "account_type": account.account_type
-    #           };
-
-    #           if (inputs.query.fields) {
-    #             const requestedFields = inputs.query.fields.split(',');
-    #             for (const field of requestedFields) {
-    #               if (user.hasOwnProperty(field)) {
-    #                 filteredAccount[field] = account[field];
-    #               }
-    #             }
-    #           }
-
-    #           filteredAccounts.push(filteredAccount);
-    #         }
-    #         const exists = filteredAccounts.some(item => (
-    #         item.account_number === searchData.account_number &&
-    #         item.account_type === searchData.account_type
-    #           ));
-
-    #         return exists;
-    #       %>
-
-    # - id: return_true
-    #   fn: com.gs.transform
-    #   args: <% outputs.return_req_details.data.data %>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  # - id: return_customer_status 
-  #   fn: com.gs.transform 
-  #   args: <% outputs.mysql_tabcustomer_one.data.status %>
-
-
-
-
-  #   # args: |
-  #   #   <js% 
-  #   #     let req_details = {
-  #   #       "account_number" : outputs.mysql_tabaccount_search.account_number,
-  #   #       "account_type" : outputs.mysql_tabaccount_search.account_type
-  #   #     }
-  #   #     return req_details
-  #   #   %>
-
-    # tasks:
-    #     - id: return_customer_status 
-    #       fn: com.gs.transform 
-    #       args: |
-    #         <js% 
-    #           let acc_data = {
-    #             "account_number" : outputs.mysql_tabaccount_one.data.account_number,
-    #             "account_type" : outputs.mysql_tabaccount_one.data.account_type
-    #               }
-    #           return acc_data
-    #         %>
-  
-    
-
-  # - id: mysql_tabaccount_create
-  #   fn: com.gs.datastore
-  #   args:
-  #     datasource: mysql
-  #     data:
-  #       data: <% inputs.body %>
-  #     config:
-  #       method: tabAccount.create
-
-  # - id: return_create 
-  #   fn: com.gs.transform 
-  #   args: <% outputs.mysql_tabaccount_create.name %>
-
-
-# summary: Create tabAccount
-# tasks:
-#   - id: mysql_tabaccount_create
-#     fn: com.gs.return
-#     args:
-#       datasource: mysql
-#       data: <% inputs.body %>
-
-
- # - id: compare_acc_details
-    #   fn: com.gs.transform
-    #   args:
-    #     data: |
-    #       < js% 
-    #         let searchData = {
-    #         "account_number": inputs.body.account_number,
-    #         "account_type": inputs.body.account_type
-    #         }
-    #         let data = outputs.return_req_details
-    #       %>
-
-
-
-  # - id: mysql_tabaccount_one
-  #   fn: com.gs.datastore
-  #   args:
-  #     datasource: mysql
-  #     data:
-  #       where:
-  #         name: <% inputs.body.name %>
-  #     config:
-  #       method: tabAccount.findUnique
-
-
-# data:
-            #   account_number: <% outputs.mysql_tabaccount_one.data.account_number %> 
-            #   account_type: <% outputs.mysql_tabaccount_one.data.account_type %> 

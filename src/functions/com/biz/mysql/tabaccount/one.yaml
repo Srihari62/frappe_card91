@@ -4,24 +4,26 @@ tasks:
     fn: com.gs.datastore
     args:
       datasource: mysql
-      data:
+      data: 
         where:
           id: <% parseInt(inputs.params.id) %>
-        select: |
-          <js% 
-            let strList = inputs.query.fields ? inputs.query.fields.split(',') : [];
-            if (!strList.includes("id")) {
-              strList.push("id");
-            }
-            if (!strList.includes("name")) {
-              strList.push("name");
-            }
-            let obj = {}
-            for (let i of strList) {
-                obj[i] = true
-            }
-            return obj
-          %>
+      #   where:
+      #     id: <% parseInt(inputs.params.id) %>
+      #   select: |
+      #     <js% 
+      #       let strList = inputs.query.fields ? inputs.query.fields.split(',') : [];
+      #       if (!strList.includes("id")) {
+      #         strList.push("id");
+      #       }
+      #       if (!strList.includes("name")) {
+      #         strList.push("name");
+      #       }
+      #       let obj = {}
+      #       for (let i of strList) {
+      #           obj[i] = true
+      #       }
+      #       return obj
+      #     %>
       config:
         method: tabAccount.findUnique
 
